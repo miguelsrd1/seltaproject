@@ -10,46 +10,46 @@ const projects = [
   {
     id: 1,
     title: 'Casa Alentejo',
-    location: 'Comporta',
-    type: 'new-build',
-    category: 'New Build',
+    location: 'Comporta, Portugal',
+    type: 'completed',
+    category: 'Completed',
     year: '2024',
     image: project1,
     description: 'Minimalist coastal retreat with panoramic views'
   },
   {
     id: 2,
-    title: 'Villa Renovação',
-    location: 'Cascais',
-    type: 'renovation',
-    category: 'Renovation',
+    title: 'Villa Moderna',
+    location: 'Sintra, Portugal',
+    type: 'completed',
+    category: 'Completed',
     year: '2023',
     image: project2,
-    description: 'Historic villa transformed into modern family home'
+    description: 'Contemporary family home with mountain backdrop'
   },
   {
     id: 3,
     title: 'Eco Residence',
-    location: 'Fundão',
-    type: 'sustainable',
-    category: 'Sustainable',
-    year: '2024',
+    location: 'Algarve, Portugal',
+    type: 'upcoming',
+    category: 'Upcoming',
+    year: '2025',
     image: project3,
-    description: 'Net-zero mountain retreat with green roof'
+    description: 'Net-zero sustainable retreat with green roof'
   },
   {
     id: 4,
     title: 'Contemporary Serra',
-    location: 'Sintra',
-    type: 'new-build',
-    category: 'New Build',
-    year: '2023',
+    location: 'Arrábida, Portugal',
+    type: 'upcoming',
+    category: 'Upcoming',
+    year: '2025',
     image: project4,
     description: 'Bold concrete and wood structure in the hills'
   }
 ];
 
-const filters = ['All', 'New Builds', 'Renovations', 'Sustainable'];
+const filters = ['All', 'Completed', 'Upcoming'];
 
 const Portfolio: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -57,9 +57,8 @@ const Portfolio: React.FC = () => {
 
   const filteredProjects = projects.filter(project => {
     if (activeFilter === 'All') return true;
-    if (activeFilter === 'New Builds') return project.type === 'new-build';
-    if (activeFilter === 'Renovations') return project.type === 'renovation';
-    if (activeFilter === 'Sustainable') return project.type === 'sustainable';
+    if (activeFilter === 'Completed') return project.type === 'completed';
+    if (activeFilter === 'Upcoming') return project.type === 'upcoming';
     return true;
   });
 
@@ -81,7 +80,7 @@ const Portfolio: React.FC = () => {
               Future Visions
             </h2>
             <p className="text-muted-foreground text-lg font-light">
-              A curated selection of our finest projects across Portugal.
+              A curated selection of our finest new build projects across Portugal.
               Each one a testament to exceptional design and craftsmanship.
             </p>
           </div>
@@ -136,34 +135,27 @@ const Portfolio: React.FC = () => {
                     transition={{ duration: 0.6 }}
                   />
 
-                  {/* Overlay */}
+                  {/* Dark gradient scrim at bottom for text legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent pointer-events-none" />
+
+                  {/* Hover Overlay */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-foreground/80"
+                    className="absolute inset-0 bg-foreground/60"
                   />
 
                   {/* Content - Always visible */}
                   <div className="absolute inset-0 p-8 flex flex-col justify-between">
                     <div className="flex justify-between items-start">
                       <div>
-                        <motion.p
-                          animate={{
-                            color: hoveredProject === project.id ? 'hsl(0, 0%, 100%)' : 'hsl(0, 0%, 100%)'
-                          }}
-                          className="text-xs font-light tracking-widest uppercase mb-1 text-primary-foreground/80"
-                        >
+                        <p className="text-xs font-light tracking-widest uppercase mb-1 text-background/90">
                           {project.category}
-                        </motion.p>
-                        <motion.h3
-                          animate={{
-                            color: hoveredProject === project.id ? 'hsl(0, 0%, 100%)' : 'hsl(0, 0%, 100%)'
-                          }}
-                          className="font-serif text-2xl lg:text-3xl text-primary-foreground"
-                        >
+                        </p>
+                        <h3 className="font-serif text-2xl lg:text-3xl text-background">
                           {project.title}
-                        </motion.h3>
+                        </h3>
                       </div>
                       <motion.div
                         animate={{
@@ -177,25 +169,23 @@ const Portfolio: React.FC = () => {
                     </div>
 
                     <div className="flex justify-between items-end">
-                      <motion.div
-                        animate={{
-                          opacity: hoveredProject === project.id ? 1 : 0,
-                          y: hoveredProject === project.id ? 0 : 10
-                        }}
-                        transition={{ duration: 0.3, delay: 0.1 }}
-                      >
-                        <p className="text-background/80 text-sm font-light mb-2">
+                      <div>
+                        <motion.p
+                          animate={{
+                            opacity: hoveredProject === project.id ? 1 : 0.8,
+                            y: hoveredProject === project.id ? 0 : 5
+                          }}
+                          transition={{ duration: 0.3, delay: 0.1 }}
+                          className="text-background/90 text-sm font-light mb-2"
+                        >
                           {project.description}
-                        </p>
-                        <p className="text-background text-sm">
+                        </motion.p>
+                        <p className="text-background text-sm font-medium">
                           {project.location} · {project.year}
                         </p>
-                      </motion.div>
+                      </div>
                     </div>
                   </div>
-
-                  {/* Gradient overlay for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent pointer-events-none" />
                 </motion.div>
               ))}
             </AnimatePresence>

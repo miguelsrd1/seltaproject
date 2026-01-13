@@ -1,36 +1,37 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Check, MapPin } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import MagneticButton from './MagneticButton';
 
 const steps = [
   {
-    id: 'project-type',
-    question: 'What type of project are you considering?',
+    id: 'location',
+    question: 'Where would you like to build in Portugal?',
     options: [
-      { value: 'new-build', label: 'New Build', description: 'Build from scratch on land' },
-      { value: 'renovation', label: 'Renovation', description: 'Transform an existing property' },
-      { value: 'unsure', label: "Not Sure Yet", description: "I'd like to discuss options" }
+      { value: 'coast', label: 'Coastal Region', description: 'Algarve, Comporta, Cascais area' },
+      { value: 'interior', label: 'Interior Portugal', description: 'Mountains and countryside' },
+      { value: 'lisbon-area', label: 'Greater Lisbon', description: 'Capital region and surroundings' },
+      { value: 'other', label: 'Other / Flexible', description: 'Open to suggestions' }
     ]
   },
   {
     id: 'land',
-    question: 'Do you already have land in Portugal?',
+    question: 'Do you already have a plot of land?',
     options: [
-      { value: 'yes', label: 'Yes, I have land', description: 'Ready to build' },
+      { value: 'yes', label: 'Yes, I have land', description: 'Ready to start the design phase' },
       { value: 'no', label: 'No, I need help finding land', description: 'Use our Land Concierge service' },
-      { value: 'property', label: 'I have a property to renovate', description: 'Existing structure' }
+      { value: 'searching', label: 'Currently searching', description: 'Would like guidance' }
     ]
   },
   {
-    id: 'location',
-    question: 'Where would you like to build?',
+    id: 'budget',
+    question: 'What is your target budget range?',
     options: [
-      { value: 'lisbon', label: 'Lisbon Area', description: 'Capital region' },
-      { value: 'cascais', label: 'Cascais / Sintra', description: 'Coastal luxury' },
-      { value: 'fundao', label: 'Fundão / Interior', description: 'Mountain tranquility' },
-      { value: 'other', label: 'Other Location', description: 'Nationwide coverage' }
+      { value: '250-500k', label: '€250k – €500k', description: 'Quality starter builds' },
+      { value: '500k-1m', label: '€500k – €1M', description: 'Premium family homes' },
+      { value: '1m-2m', label: '€1M – €2M', description: 'Luxury residences' },
+      { value: '2m+', label: '€2M+', description: 'Bespoke estates' }
     ]
   },
   {
@@ -75,59 +76,30 @@ const ContactForm: React.FC = () => {
   return (
     <section id="contact" className="bg-background py-20 lg:py-32">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left Side - Info */}
+        <div className="max-w-3xl mx-auto">
+          {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="text-center mb-12"
           >
             <p className="text-xs font-light tracking-widest uppercase text-muted-foreground mb-4">
               Start Your Project
             </p>
-            <h2 className="font-serif text-4xl lg:text-6xl mb-8">
+            <h2 className="font-serif text-4xl lg:text-6xl mb-6">
               Project Discovery
             </h2>
-            <p className="text-muted-foreground text-lg font-light mb-12 max-w-md">
-              Tell us about your vision. We'll schedule a consultation to discuss 
-              your goals and explore how we can bring them to life.
+            <p className="text-muted-foreground text-lg font-light max-w-xl mx-auto">
+              Tell us about your vision for your new build in Portugal. 
+              We'll schedule a consultation to explore how we can bring it to life.
             </p>
-
-            <div className="space-y-8">
-              <div>
-                <h4 className="font-serif text-xl mb-3">Direct Contact</h4>
-                <a 
-                  href="mailto:info@seltaprojects.com"
-                  className="story-link text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  info@seltaprojects.com
-                </a>
-              </div>
-
-              <div>
-                <h4 className="font-serif text-xl mb-3">Locations</h4>
-                <div className="space-y-2 text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <MapPin size={14} />
-                    <span>Fundão, Portugal</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin size={14} />
-                    <span>Lisbon, Portugal</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin size={14} />
-                    <span>Cascais, Portugal</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
-          {/* Right Side - Form */}
+          {/* Consultation Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="bg-gallery p-8 lg:p-12"
           >
