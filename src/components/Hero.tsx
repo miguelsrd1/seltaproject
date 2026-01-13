@@ -56,10 +56,9 @@ const Hero: React.FC = () => {
         }} transition={{
           duration: 1,
           delay: 0.4
-        }} className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-primary-foreground max-w-5xl leading-[1.1] mb-8">
-            From Vision to Keys.
-            <br />
-            <span className="text-primary-foreground/70 text-4xl">End-to-End Development.</span>
+        }} className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-primary-foreground max-w-5xl leading-[1.1] mb-8">From Vision to Keys
+End-to-End Development.<br />
+            <span className="text-4xl text-primary-foreground">End-to-End Development.</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -72,7 +71,7 @@ const Hero: React.FC = () => {
         }} transition={{
           duration: 0.8,
           delay: 0.6
-        }} className="text-primary-foreground/80 text-lg font-light max-w-xl mb-12 lg:text-base">Your key-in-hand solution for exceptional Portuguese architecture.</motion.p>
+        }} className="text-primary-foreground/80 text-lg max-w-xl mb-12 lg:text-base font-medium">Your key-in-hand solution for exceptional Portuguese architecture.</motion.p>
 
           {/* CTA Buttons */}
           <motion.div initial={{
