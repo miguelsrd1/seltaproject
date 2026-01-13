@@ -33,7 +33,7 @@ const projects = [
     location: 'Algarve, Portugal',
     type: 'upcoming',
     category: 'Upcoming',
-    year: '2025',
+    year: '2026',
     image: project3,
     description: 'Net-zero sustainable retreat with green roof'
   },
