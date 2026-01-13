@@ -4,88 +4,89 @@ import { ArrowDown, MapPin } from 'lucide-react';
 import heroImage from '@/assets/hero-house.jpg';
 import MagneticButton from './MagneticButton';
 import { Button } from './ui/button';
-
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
+  const {
+    scrollYProgress
+  } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
-
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-
-  return (
-    <section 
-      ref={containerRef}
-      className="relative h-screen overflow-hidden"
-    >
+  return <section ref={containerRef} className="relative h-screen overflow-hidden">
       {/* Parallax Background */}
-      <motion.div 
-        style={{ y, scale }}
-        className="absolute inset-0"
-      >
+      <motion.div style={{
+      y,
+      scale
+    }} className="absolute inset-0">
         <div className="absolute inset-0 bg-primary/40 z-10" />
-        <img 
-          src={heroImage} 
-          alt="Modern Portuguese Architecture" 
-          className="w-full h-full object-cover"
-        />
+        <img src={heroImage} alt="Modern Portuguese Architecture" className="w-full h-full object-cover" />
       </motion.div>
 
       {/* Grid Overlay */}
       <div className="absolute inset-0 z-10 grid-overlay opacity-20 pointer-events-none" />
 
       {/* Content */}
-      <motion.div 
-        style={{ opacity }}
-        className="relative z-20 h-full flex flex-col justify-end pb-20 lg:pb-32"
-      >
+      <motion.div style={{
+      opacity
+    }} className="relative z-20 h-full flex flex-col justify-end pb-20 lg:pb-32">
         <div className="container mx-auto px-6 lg:px-12">
           {/* Location Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex items-center gap-2 text-primary-foreground/80 mb-6"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8,
+          delay: 0.2
+        }} className="flex items-center gap-2 text-primary-foreground/80 mb-6">
             <MapPin size={14} className="text-primary-foreground/60" />
-            <span className="text-xs font-light tracking-widest uppercase">
-              Portugal · Fundão · Lisbon · Cascais · Nationwide
-            </span>
+            <span className="text-xs font-light tracking-widest uppercase">PORTUGAL</span>
           </motion.div>
 
           {/* Main Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-primary-foreground max-w-5xl leading-[1.1] mb-8"
-          >
+          <motion.h1 initial={{
+          opacity: 0,
+          y: 40
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 1,
+          delay: 0.4
+        }} className="font-serif text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-primary-foreground max-w-5xl leading-[1.1] mb-8">
             From Vision to Keys.
             <br />
-            <span className="text-primary-foreground/70">End-to-End Development.</span>
+            <span className="text-primary-foreground/70 text-4xl">End-to-End Development.</span>
           </motion.h1>
 
           {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-primary-foreground/80 text-lg lg:text-xl font-light max-w-xl mb-12"
-          >
-            We guide you through every phase: Find Land → Design → Build → Handover. 
-            Your key-in-hand solution for exceptional Portuguese architecture.
-          </motion.p>
+          <motion.p initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8,
+          delay: 0.6
+        }} className="text-primary-foreground/80 text-lg font-light max-w-xl mb-12 lg:text-base">Your key-in-hand solution for exceptional Portuguese architecture.</motion.p>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8,
+          delay: 0.8
+        }} className="flex flex-col sm:flex-row gap-4">
             <MagneticButton>
               <Button variant="hero" size="xl" asChild>
                 <a href="#contact">Start Your Journey</a>
@@ -100,16 +101,19 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
+        <motion.div initial={{
+        opacity: 0
+      }} animate={{
+        opacity: 1
+      }} transition={{
+        delay: 1.2
+      }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <motion.div animate={{
+          y: [0, 10, 0]
+        }} transition={{
+          duration: 2,
+          repeat: Infinity
+        }}>
             <ArrowDown className="text-primary-foreground/60" size={20} />
           </motion.div>
         </motion.div>
@@ -118,8 +122,6 @@ const Hero: React.FC = () => {
       {/* Technical Line Details */}
       <div className="absolute bottom-0 left-6 lg:left-12 w-px h-32 bg-gradient-to-b from-transparent to-primary-foreground/30 z-20" />
       <div className="absolute bottom-0 right-6 lg:right-12 w-px h-48 bg-gradient-to-b from-transparent to-primary-foreground/30 z-20" />
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
