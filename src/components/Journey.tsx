@@ -20,7 +20,7 @@ const journeyPhases = [
     number: '02',
     title: 'Design & Permitting',
     subtitle: 'The Blueprint',
-    description: 'Our architectural partners craft bespoke designs for your ground-up build, honoring Portuguese traditions while embracing modern luxury. We handle all permits and bureaucracy.',
+    description: 'Our architectural partners craft bespoke designs for your ground-up build, honoring Portuguese traditions. We handle all permits and bureaucracy.',
     icon: PenTool,
     image: designImage,
     details: ['Concept Development', 'Architectural Plans', 'Municipal Permits', '3D Visualization']
