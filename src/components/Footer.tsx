@@ -8,21 +8,15 @@ const Footer: React.FC = () => {
 
   const footerLinks = {
     services: [
-      { label: 'New Builds', href: '#services' },
-      { label: 'Renovations', href: '#services' },
-      { label: 'Land Concierge', href: '#services' },
-      { label: 'Project Management', href: '#services' },
+      { label: 'Land Sourcing', href: '#journey' },
+      { label: 'Design & Permitting', href: '#journey' },
+      { label: 'Construction', href: '#journey' },
+      { label: 'Project Handover', href: '#journey' },
     ],
     company: [
       { label: 'Our Journey', href: '#journey' },
       { label: 'Portfolio', href: '#portfolio' },
       { label: 'Contact', href: '#contact' },
-    ],
-    locations: [
-      'Fundão',
-      'Lisbon',
-      'Cascais',
-      'Nationwide'
     ]
   };
 
@@ -39,13 +33,13 @@ const Footer: React.FC = () => {
               className="h-10 w-auto mb-8 logo-white"
             />
             <p className="text-background/70 font-light leading-relaxed mb-8 max-w-sm">
-              End-to-end development in Portugal. From finding your perfect land 
+              End-to-end new build development in Portugal. From finding your perfect land 
               to handing you the keys, we make exceptional architecture accessible.
             </p>
             <div className="flex items-center gap-2 text-background/60">
               <MapPin size={14} />
               <span className="text-sm font-light">
-                Portugal · Fundão · Lisbon · Cascais · Nationwide
+                Portugal · Nationwide
               </span>
             </div>
           </div>

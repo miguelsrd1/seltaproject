@@ -1,30 +1,37 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { MapPin, Compass, PenTool, Hammer, Key } from 'lucide-react';
+import { MapPin, PenTool, Hammer, Key } from 'lucide-react';
+import sourcingImage from '@/assets/journey-sourcing.jpg';
+import designImage from '@/assets/journey-design.jpg';
+import constructionImage from '@/assets/journey-construction.jpg';
+import handoverImage from '@/assets/journey-handover.jpg';
 
 const journeyPhases = [
   {
     number: '01',
     title: 'Land Sourcing',
     subtitle: 'The Foundation',
-    description: "We don't just find land; we find the potential. Leveraging our elite realtor network across Portugal to secure the perfect foundation for your project.",
+    description: "We don't just find land; we find the potential. Leveraging our elite realtor network across Portugal to secure the perfect foundation for your new build.",
     icon: MapPin,
+    image: sourcingImage,
     details: ['Market Analysis', 'Site Evaluation', 'Legal Due Diligence', 'Negotiation Support']
   },
   {
     number: '02',
     title: 'Design & Permitting',
     subtitle: 'The Blueprint',
-    description: 'Our architectural partners craft bespoke designs that honor Portuguese traditions while embracing modern luxury. We handle all permits and bureaucracy.',
+    description: 'Our architectural partners craft bespoke designs for your ground-up build, honoring Portuguese traditions while embracing modern luxury. We handle all permits and bureaucracy.',
     icon: PenTool,
+    image: designImage,
     details: ['Concept Development', 'Architectural Plans', 'Municipal Permits', '3D Visualization']
   },
   {
     number: '03',
     title: 'Vetted Construction',
     subtitle: 'The Craft',
-    description: 'Only pre-qualified, rigorously vetted contractors touch your project. We manage every phase with weekly updates and transparent milestone tracking.',
+    description: 'Only pre-qualified, rigorously vetted contractors touch your new build. We manage every phase with weekly updates and transparent milestone tracking.',
     icon: Hammer,
+    image: constructionImage,
     details: ['Contractor Selection', 'Quality Control', 'Timeline Management', 'Budget Oversight']
   },
   {
@@ -33,6 +40,7 @@ const journeyPhases = [
     subtitle: 'Your Keys',
     description: 'Final inspections complete, snag list resolved, documentation delivered. We hand you the keys to a home built exactly as promised.',
     icon: Key,
+    image: handoverImage,
     details: ['Final Inspection', 'Documentation', 'Warranty Transfer', 'Welcome Home']
   }
 ];
@@ -96,28 +104,23 @@ const JourneyPhase: React.FC<{ phase: typeof journeyPhases[0]; index: number }> 
             </div>
           </motion.div>
 
-          {/* Visual Side */}
+          {/* Visual Side - Now with real images */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0.3, scale: 0.98 }}
             transition={{ duration: 0.8 }}
             className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}
           >
-            <div className="relative aspect-square bg-gallery overflow-hidden">
-              <div className="absolute inset-0 grid-overlay opacity-50" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  animate={isInView ? { rotate: 0, scale: 1 } : { rotate: -10, scale: 0.9 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <Icon size={80} strokeWidth={0.5} className="text-muted-foreground/30" />
-                </motion.div>
-              </div>
-              {/* Decorative lines */}
-              <div className="absolute top-0 left-0 w-full h-px bg-border" />
-              <div className="absolute bottom-0 left-0 w-full h-px bg-border" />
-              <div className="absolute top-0 left-0 w-px h-full bg-border" />
-              <div className="absolute top-0 right-0 w-px h-full bg-border" />
+            <div className="relative aspect-square overflow-hidden">
+              <motion.img
+                src={phase.image}
+                alt={phase.title}
+                className="w-full h-full object-cover"
+                animate={isInView ? { scale: 1 } : { scale: 1.05 }}
+                transition={{ duration: 0.8 }}
+              />
+              {/* Subtle overlay for consistency */}
+              <div className="absolute inset-0 bg-foreground/5" />
             </div>
           </motion.div>
         </div>
@@ -153,13 +156,13 @@ const Journey: React.FC = () => {
           </h2>
           <p className="text-muted-foreground text-lg font-light">
             From the first conversation to the moment you unlock your front door, 
-            we're with you at every milestone.
+            we're with you at every milestone of your new build.
           </p>
         </motion.div>
       </div>
 
-      {/* Timeline Line - Center */}
-      <div className="absolute left-1/2 top-[200px] bottom-0 w-px -translate-x-1/2 hidden lg:block">
+      {/* Timeline Line - Center - Starting below the header */}
+      <div className="absolute left-1/2 top-[350px] bottom-0 w-px -translate-x-1/2 hidden lg:block">
         <div className="w-full h-full bg-border" />
         <motion.div
           style={{ height: lineHeight }}

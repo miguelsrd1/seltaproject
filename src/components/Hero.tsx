@@ -25,8 +25,6 @@ const Hero: React.FC = () => {
         <img src={heroImage} alt="Modern Portuguese Architecture" className="w-full h-full object-cover" />
       </motion.div>
 
-      {/* Grid Overlay */}
-      <div className="absolute inset-0 z-10 grid-overlay opacity-20 pointer-events-none" />
 
       {/* Content */}
       <motion.div style={{
@@ -119,9 +117,6 @@ const Hero: React.FC = () => {
         </motion.div>
       </motion.div>
 
-      {/* Technical Line Details */}
-      <div className="absolute bottom-0 left-6 lg:left-12 w-px h-32 bg-gradient-to-b from-transparent to-primary-foreground/30 z-20" />
-      <div className="absolute bottom-0 right-6 lg:right-12 w-px h-48 bg-gradient-to-b from-transparent to-primary-foreground/30 z-20" />
     </section>;
 };
 export default Hero;
