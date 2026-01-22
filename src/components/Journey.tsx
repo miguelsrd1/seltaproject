@@ -5,50 +5,27 @@ import sourcingImage from '@/assets/journey-sourcing.jpg';
 import designImage from '@/assets/journey-design.jpg';
 import constructionImage from '@/assets/journey-construction.jpg';
 import handoverImage from '@/assets/journey-handover.jpg';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const journeyPhases = [
-  {
-    number: '01',
-    title: 'Land Sourcing',
-    subtitle: 'The Foundation',
-    description: "We don't just find land; we find the potential. Leveraging our elite realtor network across Portugal to secure the perfect foundation for your new build.",
-    icon: MapPin,
-    image: sourcingImage,
-    details: ['Market Analysis', 'Site Evaluation', 'Legal Due Diligence', 'Negotiation Support']
-  },
-  {
-    number: '02',
-    title: 'Design & Permitting',
-    subtitle: 'The Blueprint',
-    description: 'Our architectural partners craft bespoke designs for your ground-up build, honoring Portuguese traditions. We handle all permits and bureaucracy.',
-    icon: PenTool,
-    image: designImage,
-    details: ['Concept Development', 'Architectural Plans', 'Municipal Permits', '3D Visualization']
-  },
-  {
-    number: '03',
-    title: 'Vetted Construction',
-    subtitle: 'The Craft',
-    description: 'Only pre-qualified, rigorously vetted contractors touch your new build. We manage every phase with weekly updates and transparent milestone tracking.',
-    icon: Hammer,
-    image: constructionImage,
-    details: ['Contractor Selection', 'Quality Control', 'Timeline Management', 'Budget Oversight']
-  },
-  {
-    number: '04',
-    title: 'Handover',
-    subtitle: 'Your Keys',
-    description: 'Final inspections complete, snag list resolved, documentation delivered. We hand you the keys to a home built exactly as promised.',
-    icon: Key,
-    image: handoverImage,
-    details: ['Final Inspection', 'Documentation', 'Warranty Transfer', 'Welcome Home']
-  }
-];
+const icons = [MapPin, PenTool, Hammer, Key];
+const images = [sourcingImage, designImage, constructionImage, handoverImage];
 
-const JourneyPhase: React.FC<{ phase: typeof journeyPhases[0]; index: number }> = ({ phase, index }) => {
+interface JourneyPhaseProps {
+  phase: {
+    number: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    details: string[];
+  };
+  index: number;
+  image: string;
+  Icon: React.ElementType;
+}
+
+const JourneyPhase: React.FC<JourneyPhaseProps> = ({ phase, index, image, Icon }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
-  const Icon = phase.icon;
 
   return (
     <motion.div
@@ -104,7 +81,7 @@ const JourneyPhase: React.FC<{ phase: typeof journeyPhases[0]; index: number }> 
             </div>
           </motion.div>
 
-          {/* Visual Side - Now with real images */}
+          {/* Visual Side */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0.3, scale: 0.98 }}
@@ -113,13 +90,12 @@ const JourneyPhase: React.FC<{ phase: typeof journeyPhases[0]; index: number }> 
           >
             <div className="relative aspect-square overflow-hidden">
               <motion.img
-                src={phase.image}
+                src={image}
                 alt={phase.title}
                 className="w-full h-full object-cover"
                 animate={isInView ? { scale: 1 } : { scale: 1.05 }}
                 transition={{ duration: 0.8 }}
               />
-              {/* Subtle overlay for consistency */}
               <div className="absolute inset-0 bg-foreground/5" />
             </div>
           </motion.div>
@@ -131,6 +107,8 @@ const JourneyPhase: React.FC<{ phase: typeof journeyPhases[0]; index: number }> 
 
 const Journey: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -149,19 +127,18 @@ const Journey: React.FC = () => {
           className="max-w-2xl"
         >
           <p className="text-xs font-light tracking-widest uppercase text-muted-foreground mb-4">
-            The Process
+            {t.journey.sectionLabel}
           </p>
           <h2 className="font-serif text-4xl lg:text-6xl mb-6">
-            Your Journey With Us
+            {t.journey.sectionTitle}
           </h2>
           <p className="text-muted-foreground text-lg font-light">
-            From the first conversation to the moment you unlock your front door, 
-            we're with you at every milestone of your new build.
+            {t.journey.sectionSubtitle}
           </p>
         </motion.div>
       </div>
 
-      {/* Timeline Line - Center - Starting below the header */}
+      {/* Timeline Line */}
       <div className="absolute left-1/2 top-[350px] bottom-0 w-px -translate-x-1/2 hidden lg:block">
         <div className="w-full h-full bg-border" />
         <motion.div
@@ -172,8 +149,14 @@ const Journey: React.FC = () => {
 
       {/* Phases */}
       <div className="relative">
-        {journeyPhases.map((phase, index) => (
-          <JourneyPhase key={phase.number} phase={phase} index={index} />
+        {t.journey.phases.map((phase, index) => (
+          <JourneyPhase 
+            key={phase.number} 
+            phase={phase} 
+            index={index} 
+            image={images[index]}
+            Icon={icons[index]}
+          />
         ))}
       </div>
     </section>
