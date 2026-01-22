@@ -3,10 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import seltaLogo from '@/assets/selta-logo.png';
 import MagneticButton from './MagneticButton';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,9 +20,9 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { label: 'Journey', href: '#journey' },
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Contact', href: '#contact' },
+    { label: t.header.journey, href: '#journey' },
+    { label: t.header.portfolio, href: '#portfolio' },
+    { label: t.header.contact, href: '#contact' },
   ];
 
   return (
@@ -61,6 +64,7 @@ const Header: React.FC = () => {
                   </a>
                 </MagneticButton>
               ))}
+              <LanguageSwitcher isScrolled={isScrolled} />
               <MagneticButton>
                 <a
                   href="#contact"
@@ -70,7 +74,7 @@ const Header: React.FC = () => {
                       : 'border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary'
                   }`}
                 >
-                  Start Project
+                  {t.header.startProject}
                 </a>
               </MagneticButton>
             </nav>
@@ -117,6 +121,13 @@ const Header: React.FC = () => {
                   {item.label}
                 </motion.a>
               ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <LanguageSwitcher isScrolled={true} />
+              </motion.div>
               <motion.a
                 href="#contact"
                 initial={{ opacity: 0, y: 20 }}
@@ -125,7 +136,7 @@ const Header: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-4 border border-foreground px-8 py-4 text-xs font-light tracking-widest uppercase"
               >
-                Start Project
+                {t.header.startProject}
               </motion.a>
             </motion.nav>
           </motion.div>

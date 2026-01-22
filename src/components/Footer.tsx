@@ -2,21 +2,23 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, ArrowUpRight } from 'lucide-react';
 import seltaLogo from '@/assets/selta-logo.png';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   const footerLinks = {
     services: [
-      { label: 'Land Sourcing', href: '#journey' },
-      { label: 'Design & Permitting', href: '#journey' },
-      { label: 'Construction', href: '#journey' },
-      { label: 'Project Handover', href: '#journey' },
+      { label: t.footer.landSourcing, href: '#journey' },
+      { label: t.footer.designPermitting, href: '#journey' },
+      { label: t.footer.construction, href: '#journey' },
+      { label: t.footer.projectHandover, href: '#journey' },
     ],
     company: [
-      { label: 'Our Journey', href: '#journey' },
-      { label: 'Portfolio', href: '#portfolio' },
-      { label: 'Contact', href: '#contact' },
+      { label: t.footer.ourJourney, href: '#journey' },
+      { label: t.footer.portfolio, href: '#portfolio' },
+      { label: t.footer.contact, href: '#contact' },
     ]
   };
 
@@ -33,13 +35,12 @@ const Footer: React.FC = () => {
               className="h-10 w-auto mb-8 logo-white"
             />
             <p className="text-background/70 font-light leading-relaxed mb-8 max-w-sm">
-              End-to-end new build development in Portugal. From finding your perfect land 
-              to handing you the keys, we make exceptional architecture accessible.
+              {t.footer.description}
             </p>
             <div className="flex items-center gap-2 text-background/60">
               <MapPin size={14} />
               <span className="text-sm font-light">
-                Portugal · Nationwide
+                {t.footer.location}
               </span>
             </div>
           </div>
@@ -47,7 +48,7 @@ const Footer: React.FC = () => {
           {/* Services */}
           <div className="lg:col-span-2 lg:col-start-6">
             <h4 className="text-xs font-light tracking-widest uppercase mb-6 text-background/50">
-              Services
+              {t.footer.services}
             </h4>
             <ul className="space-y-4">
               {footerLinks.services.map((link) => (
@@ -66,7 +67,7 @@ const Footer: React.FC = () => {
           {/* Company */}
           <div className="lg:col-span-2">
             <h4 className="text-xs font-light tracking-widest uppercase mb-6 text-background/50">
-              Company
+              {t.footer.company}
             </h4>
             <ul className="space-y-4">
               {footerLinks.company.map((link) => (
@@ -85,7 +86,7 @@ const Footer: React.FC = () => {
           {/* Contact CTA */}
           <div className="lg:col-span-3">
             <h4 className="text-xs font-light tracking-widest uppercase mb-6 text-background/50">
-              Get In Touch
+              {t.footer.getInTouch}
             </h4>
             <a 
               href="mailto:info@seltaprojects.com"
@@ -101,7 +102,7 @@ const Footer: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               className="inline-block border border-background/30 px-8 py-4 text-xs font-light tracking-widest uppercase hover:bg-background hover:text-foreground transition-all duration-300"
             >
-              Start Your Project
+              {t.footer.startProject}
             </motion.a>
           </div>
         </div>
@@ -112,14 +113,14 @@ const Footer: React.FC = () => {
         <div className="container mx-auto px-6 lg:px-12 py-6">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
             <p className="text-background/50 text-sm font-light">
-              © {currentYear} SELTA Projects. All rights reserved.
+              © {currentYear} SELTA Projects. {t.footer.copyright}
             </p>
             <div className="flex items-center gap-8">
               <a href="#" className="text-background/50 hover:text-background text-sm font-light transition-colors">
-                Privacy Policy
+                {t.footer.privacyPolicy}
               </a>
               <a href="#" className="text-background/50 hover:text-background text-sm font-light transition-colors">
-                Terms of Service
+                {t.footer.termsOfService}
               </a>
             </div>
           </div>

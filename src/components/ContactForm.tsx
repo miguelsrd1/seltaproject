@@ -3,43 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Check } from 'lucide-react';
 import { Button } from './ui/button';
 import MagneticButton from './MagneticButton';
-
-const steps = [
-  {
-    id: 'location',
-    question: 'Where would you like to build in Portugal?',
-    options: [
-      { value: 'coast', label: 'Coastal Region', description: 'Algarve, Comporta, Cascais area' },
-      { value: 'interior', label: 'Interior Portugal', description: 'Mountains and countryside' },
-      { value: 'lisbon-area', label: 'Greater Lisbon', description: 'Capital region and surroundings' },
-      { value: 'other', label: 'Other / Flexible', description: 'Open to suggestions' }
-    ]
-  },
-  {
-    id: 'land',
-    question: 'Do you already have a plot of land?',
-    options: [
-      { value: 'yes', label: 'Yes, I have land', description: 'Ready to start the design phase' },
-      { value: 'no', label: 'No, I need help finding land', description: 'Use our Land Concierge service' },
-      { value: 'searching', label: 'Currently searching', description: 'Would like guidance' }
-    ]
-  },
-  {
-    id: 'budget',
-    question: 'What is your target budget range?',
-    options: [
-      { value: '250-500k', label: '€250k – €500k', description: 'Quality starter builds' },
-      { value: '500k-1m', label: '€500k – €1M', description: 'Premium family homes' },
-      { value: '1m-2m', label: '€1M – €2M', description: 'Luxury residences' },
-      { value: '2m+', label: '€2M+', description: 'Bespoke estates' }
-    ]
-  },
-  {
-    id: 'contact',
-    question: 'How can we reach you?',
-    type: 'form'
-  }
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -51,10 +15,14 @@ const ContactForm: React.FC = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { t } = useLanguage();
+
+  const steps = t.contact.steps;
+  const totalSteps = steps.length;
 
   const handleOptionSelect = (value: string) => {
-    setAnswers({ ...answers, [steps[currentStep].id]: value });
-    if (currentStep < steps.length - 1) {
+    setAnswers({ ...answers, [currentStep]: value });
+    if (currentStep < totalSteps - 1) {
       setTimeout(() => setCurrentStep(currentStep + 1), 300);
     }
   };
@@ -67,11 +35,13 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would send the data
     setIsSubmitted(true);
   };
 
-  const progress = ((currentStep + 1) / steps.length) * 100;
+  const progress = ((currentStep + 1) / totalSteps) * 100;
+  const currentStepData = steps[currentStep];
+  const isFormStep = currentStep === totalSteps - 1;
+  const hasOptions = 'options' in currentStepData && currentStepData.options;
 
   return (
     <section id="contact" className="bg-background py-20 lg:py-32">
@@ -85,14 +55,13 @@ const ContactForm: React.FC = () => {
             className="text-center mb-12"
           >
             <p className="text-xs font-light tracking-widest uppercase text-muted-foreground mb-4">
-              Start Your Project
+              {t.contact.sectionLabel}
             </p>
             <h2 className="font-serif text-4xl lg:text-6xl mb-6">
-              Project Discovery
+              {t.contact.sectionTitle}
             </h2>
             <p className="text-muted-foreground text-lg font-light max-w-xl mx-auto">
-              Tell us about your vision for your new build in Portugal. 
-              We'll schedule a consultation to explore how we can bring it to life.
+              {t.contact.sectionSubtitle}
             </p>
           </motion.div>
 
@@ -109,7 +78,7 @@ const ContactForm: React.FC = () => {
                 <div className="mb-8">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-xs font-light tracking-widest uppercase text-muted-foreground">
-                      Step {currentStep + 1} of {steps.length}
+                      Step {currentStep + 1} {t.contact.stepOf} {totalSteps}
                     </span>
                     <span className="text-xs text-muted-foreground">
                       {Math.round(progress)}%
@@ -135,14 +104,14 @@ const ContactForm: React.FC = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <h3 className="font-serif text-2xl lg:text-3xl mb-8">
-                      {steps[currentStep].question}
+                      {currentStepData.question}
                     </h3>
 
-                    {steps[currentStep].type === 'form' ? (
+                    {isFormStep ? (
                       <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
                           <label className="block text-xs font-light tracking-widest uppercase text-muted-foreground mb-2">
-                            Name
+                            {t.contact.form.name}
                           </label>
                           <input
                             type="text"
@@ -150,12 +119,12 @@ const ContactForm: React.FC = () => {
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors"
-                            placeholder="Your name"
+                            placeholder={t.contact.form.namePlaceholder}
                           />
                         </div>
                         <div>
                           <label className="block text-xs font-light tracking-widest uppercase text-muted-foreground mb-2">
-                            Email
+                            {t.contact.form.email}
                           </label>
                           <input
                             type="email"
@@ -163,48 +132,48 @@ const ContactForm: React.FC = () => {
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors"
-                            placeholder="your@email.com"
+                            placeholder={t.contact.form.emailPlaceholder}
                           />
                         </div>
                         <div>
                           <label className="block text-xs font-light tracking-widest uppercase text-muted-foreground mb-2">
-                            Phone (optional)
+                            {t.contact.form.phone}
                           </label>
                           <input
                             type="tel"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors"
-                            placeholder="+351..."
+                            placeholder={t.contact.form.phonePlaceholder}
                           />
                         </div>
                         <div>
                           <label className="block text-xs font-light tracking-widest uppercase text-muted-foreground mb-2">
-                            Tell us more about your vision
+                            {t.contact.form.message}
                           </label>
                           <textarea
                             value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                             rows={4}
                             className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground transition-colors resize-none"
-                            placeholder="Describe your dream project..."
+                            placeholder={t.contact.form.messagePlaceholder}
                           />
                         </div>
                         <MagneticButton className="w-full">
                           <Button type="submit" variant="premium" size="lg" className="w-full">
-                            Submit Inquiry
+                            {t.contact.form.submit}
                             <ArrowRight size={16} />
                           </Button>
                         </MagneticButton>
                       </form>
-                    ) : (
+                    ) : hasOptions ? (
                       <div className="space-y-4">
-                        {steps[currentStep].options?.map((option) => (
+                        {currentStepData.options.map((option) => (
                           <motion.button
                             key={option.value}
                             onClick={() => handleOptionSelect(option.value)}
                             className={`w-full text-left p-6 border transition-all duration-300 ${
-                              answers[steps[currentStep].id] === option.value
+                              answers[currentStep] === option.value
                                 ? 'border-foreground bg-foreground text-background'
                                 : 'border-border hover:border-foreground'
                             }`}
@@ -215,21 +184,21 @@ const ContactForm: React.FC = () => {
                               <div>
                                 <h4 className="font-serif text-lg mb-1">{option.label}</h4>
                                 <p className={`text-sm font-light ${
-                                  answers[steps[currentStep].id] === option.value
+                                  answers[currentStep] === option.value
                                     ? 'text-background/70'
                                     : 'text-muted-foreground'
                                 }`}>
                                   {option.description}
                                 </p>
                               </div>
-                              {answers[steps[currentStep].id] === option.value && (
+                              {answers[currentStep] === option.value && (
                                 <Check size={20} />
                               )}
                             </div>
                           </motion.button>
                         ))}
                       </div>
-                    )}
+                    ) : null}
                   </motion.div>
                 </AnimatePresence>
 
@@ -240,7 +209,7 @@ const ContactForm: React.FC = () => {
                     className="mt-8 flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <ArrowLeft size={16} />
-                    <span className="text-sm">Back</span>
+                    <span className="text-sm">{t.contact.form.back}</span>
                   </button>
                 )}
               </>
@@ -253,10 +222,9 @@ const ContactForm: React.FC = () => {
                 <div className="w-16 h-16 border-2 border-foreground flex items-center justify-center mx-auto mb-8">
                   <Check size={32} />
                 </div>
-                <h3 className="font-serif text-3xl mb-4">Thank You</h3>
+                <h3 className="font-serif text-3xl mb-4">{t.contact.success.title}</h3>
                 <p className="text-muted-foreground font-light">
-                  We've received your inquiry and will be in touch within 24 hours 
-                  to discuss your project.
+                  {t.contact.success.message}
                 </p>
               </motion.div>
             )}
