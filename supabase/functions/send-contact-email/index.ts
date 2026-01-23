@@ -47,7 +47,8 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "Selta Projects <onboarding@resend.dev>",
-        to: ["info@seltaprojects.com"],
+        // TODO: Change to info@seltaprojects.com after domain verification in Resend
+        to: ["miguelrd.topo@gmail.com"],
         subject: `Novo Pedido de Consulta - ${name}`,
         html: `
           <!DOCTYPE html>
