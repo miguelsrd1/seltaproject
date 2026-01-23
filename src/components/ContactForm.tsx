@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Check } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Check, Loader2 } from 'lucide-react';
 import { Button } from './ui/button';
 import MagneticButton from './MagneticButton';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 const ContactForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -15,10 +17,22 @@ const ContactForm: React.FC = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { t } = useLanguage();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t, language } = useLanguage();
+  const { toast } = useToast();
 
   const steps = t.contact.steps;
   const totalSteps = steps.length;
+
+  // Map answer values to labels for the email
+  const getAnswerLabel = (stepIndex: number, value: string) => {
+    const step = steps[stepIndex];
+    if ('options' in step && step.options) {
+      const option = step.options.find(opt => opt.value === value);
+      return option ? option.label : value;
+    }
+    return value;
+  };
 
   const handleOptionSelect = (value: string) => {
     setAnswers({ ...answers, [currentStep]: value });
@@ -33,9 +47,40 @@ const ContactForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const payload = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim() || undefined,
+        message: formData.message.trim() || undefined,
+        location: getAnswerLabel(0, answers[0]),
+        land: getAnswerLabel(1, answers[1]),
+        budget: getAnswerLabel(2, answers[2]),
+      };
+
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: payload,
+      });
+
+      if (error) throw error;
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: language === 'pt' ? 'Erro ao enviar' : 'Submission Error',
+        description: language === 'pt' 
+          ? 'Ocorreu um erro ao enviar o seu pedido. Por favor tente novamente.' 
+          : 'An error occurred while submitting your request. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const progress = ((currentStep + 1) / totalSteps) * 100;
@@ -160,9 +205,24 @@ const ContactForm: React.FC = () => {
                           />
                         </div>
                         <MagneticButton className="w-full">
-                          <Button type="submit" variant="premium" size="lg" className="w-full">
-                            {t.contact.form.submit}
-                            <ArrowRight size={16} />
+                          <Button 
+                            type="submit" 
+                            variant="premium" 
+                            size="lg" 
+                            className="w-full"
+                            disabled={isSubmitting}
+                          >
+                            {isSubmitting ? (
+                              <>
+                                <Loader2 size={16} className="animate-spin" />
+                                {language === 'pt' ? 'A enviar...' : 'Sending...'}
+                              </>
+                            ) : (
+                              <>
+                                {t.contact.form.submit}
+                                <ArrowRight size={16} />
+                              </>
+                            )}
                           </Button>
                         </MagneticButton>
                       </form>
