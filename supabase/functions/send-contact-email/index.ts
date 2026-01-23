@@ -2,11 +2,49 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
-};
+// Allowed origins for CORS - restrict to production domains
+const allowedOrigins = [
+  "https://seltaproject.lovable.app",
+  "https://id-preview--f618a703-39df-424f-8de4-a9e728db8d18.lovable.app",
+];
+
+// Get CORS headers based on origin
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const isAllowed = origin && allowedOrigins.some(allowed => origin.startsWith(allowed.replace(/\/$/, '')));
+  return {
+    "Access-Control-Allow-Origin": isAllowed ? origin : allowedOrigins[0],
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+  };
+}
+
+// Validate origin
+function isOriginAllowed(origin: string | null): boolean {
+  if (!origin) return false;
+  return allowedOrigins.some(allowed => origin.startsWith(allowed.replace(/\/$/, '')));
+}
+
+// Escape HTML to prevent injection
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// Validate email format
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email) && email.length <= 255;
+}
+
+// Validate phone format (optional, allows common formats)
+function isValidPhone(phone: string): boolean {
+  const phoneRegex = /^[\d+\s()\-\.]{0,25}$/;
+  return phoneRegex.test(phone);
+}
 
 interface ContactEmailRequest {
   name: string;
@@ -19,24 +57,73 @@ interface ContactEmailRequest {
 }
 
 const handler = async (req: Request): Promise<Response> => {
+  const origin = req.headers.get("origin");
+  const corsHeaders = getCorsHeaders(origin);
+
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Only allow POST requests
+  if (req.method !== "POST") {
+    return new Response(
+      JSON.stringify({ error: "Method not allowed" }),
+      { status: 405, headers: { "Content-Type": "application/json", ...corsHeaders } }
+    );
+  }
+
+  // Validate origin
+  if (!isOriginAllowed(origin)) {
+    console.error("Request from unauthorized origin:", origin);
+    return new Response(
+      JSON.stringify({ error: "Forbidden" }),
+      { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } }
+    );
+  }
+
   try {
-    const { name, email, phone, message, location, land, budget }: ContactEmailRequest = await req.json();
+    const body = await req.json();
+    
+    // Extract and validate fields with length limits
+    const name = typeof body.name === "string" ? body.name.trim().slice(0, 100) : "";
+    const email = typeof body.email === "string" ? body.email.trim().slice(0, 255) : "";
+    const phone = typeof body.phone === "string" ? body.phone.trim().slice(0, 25) : "";
+    const message = typeof body.message === "string" ? body.message.trim().slice(0, 2000) : "";
+    const location = typeof body.location === "string" ? body.location.trim().slice(0, 100) : "";
+    const land = typeof body.land === "string" ? body.land.trim().slice(0, 100) : "";
+    const budget = typeof body.budget === "string" ? body.budget.trim().slice(0, 100) : "";
 
     // Validate required fields
-    if (!name || !email) {
+    if (!name || name.length < 2) {
       return new Response(
-        JSON.stringify({ error: "Nome e email são obrigatórios" }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
-        }
+        JSON.stringify({ error: "Nome é obrigatório (mínimo 2 caracteres)" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
+
+    if (!email || !isValidEmail(email)) {
+      return new Response(
+        JSON.stringify({ error: "Email inválido" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    if (phone && !isValidPhone(phone)) {
+      return new Response(
+        JSON.stringify({ error: "Formato de telefone inválido" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Escape all user inputs for HTML embedding
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
+    const safeMessage = escapeHtml(message);
+    const safeLocation = escapeHtml(location);
+    const safeLand = escapeHtml(land);
+    const safeBudget = escapeHtml(budget);
 
     // Send notification email to Selta Projects
     const notificationRes = await fetch("https://api.resend.com/emails", {
@@ -49,7 +136,7 @@ const handler = async (req: Request): Promise<Response> => {
         from: "Selta Projects <onboarding@resend.dev>",
         // TODO: Change to info@seltaprojects.com after domain verification in Resend
         to: ["miguelrd.topo@gmail.com"],
-        subject: `Novo Pedido de Consulta - ${name}`,
+        subject: `Novo Pedido de Consulta - ${safeName}`,
         html: `
           <!DOCTYPE html>
           <html>
@@ -83,15 +170,15 @@ const handler = async (req: Request): Promise<Response> => {
                 <div class="info-grid">
                   <div class="info-row">
                     <div class="info-label">Localização:</div>
-                    <div class="info-value">${location || 'Não especificado'}</div>
+                    <div class="info-value">${safeLocation || 'Não especificado'}</div>
                   </div>
                   <div class="info-row">
                     <div class="info-label">Terreno:</div>
-                    <div class="info-value">${land || 'Não especificado'}</div>
+                    <div class="info-value">${safeLand || 'Não especificado'}</div>
                   </div>
                   <div class="info-row">
                     <div class="info-label">Orçamento:</div>
-                    <div class="info-value">${budget || 'Não especificado'}</div>
+                    <div class="info-value">${safeBudget || 'Não especificado'}</div>
                   </div>
                 </div>
               </div>
@@ -101,25 +188,25 @@ const handler = async (req: Request): Promise<Response> => {
                 <div class="info-grid">
                   <div class="info-row">
                     <div class="info-label">Nome:</div>
-                    <div class="info-value">${name}</div>
+                    <div class="info-value">${safeName}</div>
                   </div>
                   <div class="info-row">
                     <div class="info-label">Email:</div>
-                    <div class="info-value"><a href="mailto:${email}">${email}</a></div>
+                    <div class="info-value"><a href="mailto:${safeEmail}">${safeEmail}</a></div>
                   </div>
-                  ${phone ? `
+                  ${safePhone ? `
                   <div class="info-row">
                     <div class="info-label">Telefone:</div>
-                    <div class="info-value"><a href="tel:${phone}">${phone}</a></div>
+                    <div class="info-value"><a href="tel:${safePhone}">${safePhone}</a></div>
                   </div>
                   ` : ''}
                 </div>
               </div>
               
-              ${message ? `
+              ${safeMessage ? `
               <div class="section">
                 <div class="section-title">Mensagem</div>
-                <div class="message-box">${message}</div>
+                <div class="message-box">${safeMessage}</div>
               </div>
               ` : ''}
               
@@ -136,7 +223,10 @@ const handler = async (req: Request): Promise<Response> => {
     if (!notificationRes.ok) {
       const error = await notificationRes.text();
       console.error("Failed to send notification email:", error);
-      throw new Error(`Failed to send notification email: ${error}`);
+      return new Response(
+        JSON.stringify({ error: "Falha ao enviar o pedido. Por favor tente novamente." }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
     console.log("Notification email sent successfully");
@@ -173,7 +263,7 @@ const handler = async (req: Request): Promise<Response> => {
               </div>
               
               <div class="content">
-                <p>Olá ${name},</p>
+                <p>Olá ${safeName},</p>
                 
                 <p>Obrigado pelo seu interesse na Selta Projects. Recebemos o seu pedido de consulta e a nossa equipa entrará em contacto consigo brevemente.</p>
                 
@@ -206,20 +296,13 @@ const handler = async (req: Request): Promise<Response> => {
 
     return new Response(
       JSON.stringify({ success: true }),
-      {
-        status: 200,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
+      { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: unknown) {
     console.error("Error in send-contact-email function:", error);
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return new Response(
-      JSON.stringify({ error: errorMessage }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
+      JSON.stringify({ error: "Ocorreu um erro ao processar o seu pedido. Por favor tente novamente." }),
+      { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   }
 };
