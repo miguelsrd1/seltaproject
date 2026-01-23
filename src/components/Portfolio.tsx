@@ -144,7 +144,7 @@ const Portfolio: React.FC = () => {
                           {project.description}
                         </motion.p>
                         <p className="text-background text-sm font-medium">
-                          {project.location} · {project.year}
+                          {project.location}
                         </p>
                       </div>
                     </div>
