@@ -2,10 +2,14 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
-// Allowed origins for CORS - restrict to production domains
+// Allowed origins for CORS
+// Add your production domain here when you deploy (e.g. "https://seltaprojects.com")
 const allowedOrigins = [
-  "https://seltaproject.lovable.app",
-  "https://id-preview--f618a703-39df-424f-8de4-a9e728db8d18.lovable.app",
+  "http://localhost:5173",
+  "http://localhost:8080",
+  "http://localhost:8081",
+  "https://seltaprojects.com",
+  "https://www.seltaprojects.com",
 ];
 
 // Get CORS headers based on origin

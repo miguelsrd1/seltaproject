@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import project1 from '@/assets/project-1.jpg';
@@ -10,28 +10,24 @@ const projectImages = [project1, project2, project3, project4];
 const Portfolio: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const {
-    t
-  } = useLanguage();
-  const filters = [{
-    value: 'all',
-    label: t.portfolio.filterAll
-  }, {
-    value: 'completed',
-    label: t.portfolio.filterCompleted
-  }, {
-    value: 'upcoming',
-    label: t.portfolio.filterUpcoming
-  }];
-  const projects = t.portfolio.projects.map((project, index) => ({
-    ...project,
-    image: projectImages[index],
-    type: index < 2 ? 'completed' : 'upcoming'
-  }));
-  const filteredProjects = projects.filter(project => {
-    if (activeFilter === 'all') return true;
-    return project.type === activeFilter;
-  });
+  const { t } = useLanguage();
+  const filters = [
+    { value: 'all', label: t.portfolio.filterAll },
+    { value: 'completed', label: t.portfolio.filterCompleted },
+    { value: 'upcoming', label: t.portfolio.filterUpcoming },
+  ];
+  const projects = useMemo(() =>
+    t.portfolio.projects.map((project, index) => ({
+      ...project,
+      image: projectImages[index],
+      type: index < 2 ? 'completed' : 'upcoming',
+    })),
+    [t]
+  );
+  const filteredProjects = useMemo(() =>
+    projects.filter(project => activeFilter === 'all' || project.type === activeFilter),
+    [projects, activeFilter]
+  );
   return <section id="portfolio" className="bg-gallery py-20 lg:py-32">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Section Header */}
@@ -57,7 +53,22 @@ const Portfolio: React.FC = () => {
           </div>
 
           {/* Filter Tabs */}
-          
+          <div className="flex gap-1" role="group" aria-label="Filter projects">
+            {filters.map((filter) => (
+              <button
+                key={filter.value}
+                onClick={() => setActiveFilter(filter.value)}
+                aria-pressed={activeFilter === filter.value}
+                className={`px-4 py-2 text-xs font-light tracking-widest uppercase transition-all duration-300 ${
+                  activeFilter === filter.value
+                    ? 'bg-foreground text-background'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Projects Grid */}
@@ -78,7 +89,7 @@ const Portfolio: React.FC = () => {
               ease: [0.25, 0.46, 0.45, 0.94]
             }} className="group relative aspect-[4/3] overflow-hidden cursor-pointer" onMouseEnter={() => setHoveredProject(project.id)} onMouseLeave={() => setHoveredProject(null)}>
                   {/* Image */}
-                  <motion.img src={project.image} alt={project.title} className="w-full h-full object-cover" animate={{
+                  <motion.img src={project.image} alt={project.title} loading="lazy" className="w-full h-full object-cover" animate={{
                 scale: hoveredProject === project.id ? 1.1 : 1
               }} transition={{
                 duration: 0.6

@@ -82,6 +82,8 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
               className={`lg:hidden relative z-10 p-2 transition-colors ${
                 isScrolled ? 'text-foreground' : 'text-primary-foreground'
               }`}

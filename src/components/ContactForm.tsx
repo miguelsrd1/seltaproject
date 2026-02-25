@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Check, Loader2 } from 'lucide-react';
+import { z } from 'zod';
 import { Button } from './ui/button';
 import MagneticButton from './MagneticButton';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+
+const formSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
+  email: z.string().email({ message: 'Invalid email address' }),
+  phone: z.union([
+    z.string().regex(/^[+\d\s\-()\\.]{7,}$/, { message: 'Invalid phone number' }),
+    z.literal(''),
+  ]),
+  message: z.string().optional(),
+});
 
 const ContactForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -49,6 +60,18 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const validation = formSchema.safeParse(formData);
+    if (!validation.success) {
+      const firstError = validation.error.issues[0];
+      toast({
+        title: language === 'pt' ? 'Dados inválidos' : 'Invalid input',
+        description: firstError.message,
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -266,6 +289,7 @@ const ContactForm: React.FC = () => {
                 {currentStep > 0 && (
                   <button
                     onClick={handleBack}
+                    aria-label="Go to previous step"
                     className="mt-8 flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <ArrowLeft size={16} />

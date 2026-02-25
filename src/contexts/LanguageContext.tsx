@@ -11,9 +11,10 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
-    // Check localStorage for saved preference, default to 'pt'
     const saved = localStorage.getItem('selta-language');
-    return (saved === 'en' ? 'en' : 'pt') as Language;
+    if (saved === 'en' || saved === 'pt') return saved;
+    // Fall back to browser language if no saved preference
+    return navigator.language.startsWith('en') ? 'en' : 'pt';
   });
 
   const setLanguage = (lang: Language) => {
