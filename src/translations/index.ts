@@ -1,126 +1,126 @@
 export const translations = {
   pt: {
     header: {
-      journey: 'Percurso',
-      portfolio: 'Portfolio',
+      journey: 'Como Trabalhamos',
+      portfolio: 'Projetos',
       contact: 'Contacto',
       startProject: 'Iniciar Projeto'
     },
     hero: {
-      location: 'PORTUGAL',
-      heading: 'Da Visão às Chaves',
-      subheading: 'Desenvolvimento Integral.',
-      subtitle: 'A sua solução chave-na-mão para arquitetura portuguesa excecional.',
-      startJourney: 'Inicie o Seu Percurso',
-      viewPortfolio: 'Ver Portfolio'
+      location: 'LISBOA · CASCAIS · SETÚBAL',
+      heading: 'A Sua Obra Nova,',
+      subheading: 'Gerida com Rigor.',
+      subtitle: 'Coordenamos arquitetos, empreiteiros e licenças para que se foque no que importa — o resultado final.',
+      startJourney: 'Falar Connosco',
+      viewPortfolio: 'Ver Projetos'
     },
     journey: {
-      sectionLabel: 'O Processo',
-      sectionTitle: 'O Seu Percurso Connosco',
-      sectionSubtitle: 'Desde a primeira conversa até ao momento em que abre a porta de sua casa, estamos consigo em cada etapa da sua nova construção.',
+      sectionLabel: 'Como Trabalhamos',
+      sectionTitle: 'O Seu Projeto, do Início ao Fim',
+      sectionSubtitle: 'Desde a primeira reunião até à entrega das chaves, a SELTA gere cada detalhe da sua obra nova na área de Lisboa.',
       phases: [
         {
           number: '01',
-          title: 'Procura de Terreno',
-          subtitle: 'A Fundação',
-          description: 'Não encontramos apenas terrenos; encontramos potencial. Utilizamos a nossa rede de elite de agentes imobiliários em Portugal para garantir a fundação perfeita para a sua nova construção.',
-          details: ['Análise de Mercado', 'Avaliação do Terreno', 'Due Diligence Legal', 'Apoio na Negociação']
+          title: 'Prospeção e Terreno',
+          subtitle: 'A Base',
+          description: 'Ajudamos a avaliar terrenos e a identificar o lote certo para o seu projeto. Analisamos condicionantes urbanísticas, PDMs e potencial construtivo antes de qualquer compromisso.',
+          details: ['Análise de Condicionantes', 'Consulta de PDM', 'Avaliação do Lote', 'Apoio à Decisão']
         },
         {
           number: '02',
-          title: 'Design e Licenciamento',
-          subtitle: 'O Projeto',
-          description: 'Os nossos parceiros de arquitetura criam designs únicos para a sua construção, honrando as tradições portuguesas. Tratamos de todas as licenças e burocracia.',
-          details: ['Desenvolvimento do Conceito', 'Projetos de Arquitetura', 'Licenças Municipais', 'Visualização 3D']
+          title: 'Projeto e Licenciamento',
+          subtitle: 'A Burocracia',
+          description: 'Coordenamos a equipa de projeto — arquiteto, engenheiro e especialidades — e acompanhamos o processo de licenciamento junto das câmaras municipais até à emissão do alvará.',
+          details: ['Coordenação de Projeto', 'Acompanhamento no Município', 'Gestão de Especialidades', 'Emissão do Alvará']
         },
         {
           number: '03',
-          title: 'Construção Verificada',
-          subtitle: 'A Arte',
-          description: 'Apenas empreiteiros pré-qualificados e rigorosamente verificados trabalham na sua construção. Gerimos cada fase com atualizações semanais e acompanhamento transparente.',
-          details: ['Seleção de Empreiteiros', 'Controlo de Qualidade', 'Gestão de Prazos', 'Supervisão do Orçamento']
+          title: 'Coordenação de Obra',
+          subtitle: 'A Execução',
+          description: 'Selecionamos e gerimos empreiteiros verificados, acompanhamos o estaleiro com visitas regulares e mantemos o cliente informado sobre prazos, custos e qualidade de execução.',
+          details: ['Seleção de Empreiteiros', 'Visitas de Acompanhamento', 'Controlo de Prazos', 'Reporte Regular']
         },
         {
           number: '04',
-          title: 'Entrega',
+          title: 'Entrega e Fecho',
           subtitle: 'As Suas Chaves',
-          description: 'Inspeções finais concluídas, lista de pendências resolvida, documentação entregue. Entregamos-lhe as chaves de uma casa construída exatamente como prometido.',
-          details: ['Inspeção Final', 'Documentação', 'Transferência de Garantia', 'Bem-vindo a Casa']
+          description: 'Coordenamos as inspeções finais, resolvemos pendências, tratamos da licença de utilização e entregamos a documentação completa. A sua obra, concluída como combinado.',
+          details: ['Inspeções Finais', 'Licença de Utilização', 'Documentação Completa', 'Entrega ao Cliente']
         }
       ]
     },
     portfolio: {
-      sectionLabel: 'O Nosso Trabalho',
-      sectionTitle: 'Visões Futuras',
-      sectionSubtitle: 'Uma seleção curada dos nossos melhores projetos de construção nova em Portugal.',
+      sectionLabel: 'Tipos de Projeto',
+      sectionTitle: 'O Que Coordenamos',
+      sectionSubtitle: 'Obras novas unifamiliares e pequenos empreendimentos na área de Lisboa, Cascais e Setúbal.',
       filterAll: 'Todos',
-      filterCompleted: 'Concluídos',
-      filterUpcoming: 'Próximos',
+      filterCompleted: 'Moradias',
+      filterUpcoming: 'Empreendimentos',
       projects: [
         {
           id: 1,
-          title: 'Casa Alentejo',
-          location: 'Comporta, Portugal',
-          category: 'Concluído',
-          year: '2024',
-          description: 'Refúgio costeiro minimalista com vistas panorâmicas'
+          title: 'Moradia Unifamiliar',
+          location: 'Cascais, Lisboa',
+          category: 'Moradias',
+          year: '',
+          description: 'Coordenação completa de moradia nova — projeto, licenciamento e obra — em condomínio na linha de Cascais'
         },
         {
           id: 2,
-          title: 'Villa Moderna',
-          location: 'Sintra, Portugal',
-          category: 'Concluído',
-          year: '2023',
-          description: 'Casa familiar contemporânea com paisagem montanhosa'
+          title: 'Moradia com Piscina',
+          location: 'Sintra, Lisboa',
+          category: 'Moradias',
+          year: '',
+          description: 'Gestão de obra nova com piscina e paisagismo em zona de Sintra, do projeto à entrega final'
         },
         {
           id: 3,
-          title: 'Eco Residence',
-          location: 'Algarve, Portugal',
-          category: 'Próximo',
-          year: '2026',
-          description: 'Refúgio sustentável net-zero com telhado verde'
+          title: 'Pequeno Empreendimento',
+          location: 'Setúbal',
+          category: 'Empreendimentos',
+          year: '',
+          description: 'Coordenação de empreendimento de pequena escala na região de Setúbal, da aprovação municipal à comercialização'
         },
         {
           id: 4,
-          title: 'Contemporary Serra',
-          location: 'Arrábida, Portugal',
-          category: 'Próximo',
-          year: '2025',
-          description: 'Estrutura ousada de betão e madeira nas colinas'
+          title: 'Moradia na Serra',
+          location: 'Arrábida, Setúbal',
+          category: 'Moradias',
+          year: '',
+          description: 'Obra nova em zona de Reserva Natural, com coordenação de licenciamento especial e empreiteiro qualificado'
         }
       ]
     },
     contact: {
-      sectionLabel: 'Iniciar o Seu Projeto',
-      sectionTitle: 'Descoberta do Projeto',
-      sectionSubtitle: 'Conte-nos sobre a sua visão para a sua nova construção em Portugal. Agendaremos uma consulta para explorar como podemos concretizá-la.',
+      sectionLabel: 'Fale Connosco',
+      sectionTitle: 'Conte-nos o Seu Projeto',
+      sectionSubtitle: 'Diga-nos o que tem em mente. Marcamos uma reunião sem compromisso para perceber como podemos ajudar.',
       stepOf: 'de',
       steps: [
         {
-          question: 'Onde gostaria de construir em Portugal?',
+          question: 'Onde pretende construir?',
           options: [
-            { value: 'coast', label: 'Região Costeira', description: 'Algarve, Comporta, zona de Cascais' },
-            { value: 'interior', label: 'Interior de Portugal', description: 'Montanhas e campo' },
-            { value: 'lisbon-area', label: 'Grande Lisboa', description: 'Região da capital e arredores' },
-            { value: 'other', label: 'Outro / Flexível', description: 'Aberto a sugestões' }
+            { value: 'cascais-sintra', label: 'Cascais / Sintra', description: 'Linha de Cascais e arredores de Sintra' },
+            { value: 'lisbon-city', label: 'Lisboa Cidade', description: 'Município de Lisboa' },
+            { value: 'setubal', label: 'Setúbal / Arrábida', description: 'Margem Sul e Serra da Arrábida' },
+            { value: 'other', label: 'Outra Localização', description: 'Área metropolitana ou outro distrito' }
           ]
         },
         {
-          question: 'Já tem um terreno?',
+          question: 'Já tem terreno ou imóvel?',
           options: [
-            { value: 'yes', label: 'Sim, tenho terreno', description: 'Pronto para iniciar a fase de design' },
-            { value: 'no', label: 'Não, preciso de ajuda para encontrar', description: 'Usar o nosso serviço de Concierge de Terrenos' },
-            { value: 'searching', label: 'Atualmente a procurar', description: 'Gostaria de orientação' }
+            { value: 'yes', label: 'Sim, já tenho', description: 'Pronto para avançar com projeto e obra' },
+            { value: 'looking', label: 'Ainda à procura', description: 'Gostaria de ajuda na avaliação de opções' },
+            { value: 'no', label: 'Não, preciso de encontrar', description: 'Procura de terreno faz parte do âmbito' }
           ]
         },
         {
-          question: 'Qual é o seu orçamento alvo?',
+          question: 'Qual o investimento previsto?',
           options: [
-            { value: '250-500k', label: '€250k – €500k', description: 'Construções iniciais de qualidade' },
-            { value: '500k-1m', label: '€500k – €1M', description: 'Casas familiares premium' },
-            { value: '1m-2m', label: '€1M – €2M', description: 'Residências de luxo' },
-            { value: '2m+', label: '€2M+', description: 'Propriedades exclusivas' }
+            { value: '200-400k', label: '€200k – €400k', description: 'Moradia de dimensão média' },
+            { value: '400k-800k', label: '€400k – €800k', description: 'Moradia de maior dimensão ou com acabamentos especiais' },
+            { value: '800k-1.5m', label: '€800k – €1,5M', description: 'Moradia de gama alta ou pequeno empreendimento' },
+            { value: '1.5m+', label: '€1,5M+', description: 'Empreendimento ou projeto de referência' }
           ]
         },
         {
@@ -134,30 +134,30 @@ export const translations = {
         emailPlaceholder: 'seu@email.com',
         phone: 'Telefone (opcional)',
         phonePlaceholder: '+351...',
-        message: 'Conte-nos mais sobre a sua visão',
-        messagePlaceholder: 'Descreva o seu projeto de sonho...',
-        submit: 'Enviar Pedido',
+        message: 'Conte-nos mais sobre o projeto',
+        messagePlaceholder: 'Localização, dimensão, prazo pretendido...',
+        submit: 'Enviar Mensagem',
         back: 'Voltar'
       },
       success: {
-        title: 'Obrigado',
-        message: 'Recebemos o seu pedido e entraremos em contacto dentro de 24 horas para discutir o seu projeto.'
+        title: 'Mensagem Recebida',
+        message: 'Entraremos em contacto nas próximas 24 horas para marcar uma reunião.'
       }
     },
     footer: {
-      description: 'Desenvolvimento de construção nova de ponta a ponta em Portugal. Desde encontrar o terreno perfeito até entregar-lhe as chaves, tornamos a arquitetura excecional acessível.',
-      location: 'Portugal · Nacional',
+      description: 'Coordenação e gestão de obras novas em Lisboa, Cascais e Setúbal. Arquitetos, empreiteiros e licenciamento geridos do início ao fim.',
+      location: 'Lisboa · Cascais · Setúbal',
       services: 'Serviços',
-      landSourcing: 'Procura de Terreno',
-      designPermitting: 'Design e Licenciamento',
-      construction: 'Construção',
-      projectHandover: 'Entrega do Projeto',
+      landSourcing: 'Prospeção de Terreno',
+      designPermitting: 'Projeto e Licenciamento',
+      construction: 'Coordenação de Obra',
+      projectHandover: 'Entrega e Fecho',
       company: 'Empresa',
-      ourJourney: 'O Nosso Percurso',
-      portfolio: 'Portfolio',
+      ourJourney: 'Como Trabalhamos',
+      portfolio: 'Projetos',
       contact: 'Contacto',
-      getInTouch: 'Contacte-nos',
-      startProject: 'Iniciar o Seu Projeto',
+      getInTouch: 'Falar Connosco',
+      startProject: 'Iniciar Projeto',
       copyright: 'Todos os direitos reservados.',
       privacyPolicy: 'Política de Privacidade',
       termsOfService: 'Termos de Serviço'
@@ -165,126 +165,126 @@ export const translations = {
   },
   en: {
     header: {
-      journey: 'Journey',
-      portfolio: 'Portfolio',
+      journey: 'How We Work',
+      portfolio: 'Projects',
       contact: 'Contact',
       startProject: 'Start Project'
     },
     hero: {
-      location: 'PORTUGAL',
-      heading: 'From Vision to Keys',
-      subheading: 'End-to-End Development.',
-      subtitle: 'Your key-in-hand solution for exceptional Portuguese architecture.',
-      startJourney: 'Start Your Journey',
-      viewPortfolio: 'View Portfolio'
+      location: 'LISBON · CASCAIS · SETÚBAL',
+      heading: 'Your New Build,',
+      subheading: 'Expertly Coordinated.',
+      subtitle: 'We manage architects, contractors and permits so you can focus on what matters — the finished result.',
+      startJourney: 'Talk to Us',
+      viewPortfolio: 'View Projects'
     },
     journey: {
-      sectionLabel: 'The Process',
-      sectionTitle: 'Your Journey With Us',
-      sectionSubtitle: "From the first conversation to the moment you unlock your front door, we're with you at every milestone of your new build.",
+      sectionLabel: 'How We Work',
+      sectionTitle: 'Your Project, Start to Finish',
+      sectionSubtitle: "From the first meeting to key handover, SELTA manages every detail of your new build in the Lisbon area.",
       phases: [
         {
           number: '01',
-          title: 'Land Sourcing',
+          title: 'Site & Land',
           subtitle: 'The Foundation',
-          description: "We don't just find land; we find the potential. Leveraging our elite realtor network across Portugal to secure the perfect foundation for your new build.",
-          details: ['Market Analysis', 'Site Evaluation', 'Legal Due Diligence', 'Negotiation Support']
+          description: 'We help you assess plots and identify the right site for your project. We review planning constraints, local PDMs and build potential before any commitment is made.',
+          details: ['Planning Constraints', 'PDM Review', 'Site Assessment', 'Decision Support']
         },
         {
           number: '02',
           title: 'Design & Permitting',
-          subtitle: 'The Blueprint',
-          description: 'Our architectural partners craft bespoke designs for your ground-up build, honoring Portuguese traditions. We handle all permits and bureaucracy.',
-          details: ['Concept Development', 'Architectural Plans', 'Municipal Permits', '3D Visualization']
+          subtitle: 'The Paperwork',
+          description: 'We coordinate the full project team — architect, structural engineer and specialists — and follow the permitting process with the local council through to building licence approval.',
+          details: ['Project Coordination', 'Council Liaison', 'Specialist Management', 'Building Licence']
         },
         {
           number: '03',
-          title: 'Vetted Construction',
-          subtitle: 'The Craft',
-          description: 'Only pre-qualified, rigorously vetted contractors touch your new build. We manage every phase with weekly updates and transparent milestone tracking.',
-          details: ['Contractor Selection', 'Quality Control', 'Timeline Management', 'Budget Oversight']
+          title: 'Construction Management',
+          subtitle: 'The Build',
+          description: 'We select and manage vetted contractors, conduct regular site visits and keep you informed on timelines, costs and build quality at every stage.',
+          details: ['Contractor Selection', 'Site Visits', 'Timeline Control', 'Regular Reporting']
         },
         {
           number: '04',
-          title: 'Handover',
+          title: 'Handover & Close',
           subtitle: 'Your Keys',
-          description: 'Final inspections complete, snag list resolved, documentation delivered. We hand you the keys to a home built exactly as promised.',
-          details: ['Final Inspection', 'Documentation', 'Warranty Transfer', 'Welcome Home']
+          description: 'We coordinate final inspections, resolve any snag items, handle the habitation licence and deliver a complete documentation pack. Your build, finished as agreed.',
+          details: ['Final Inspections', 'Habitation Licence', 'Full Documentation', 'Client Handover']
         }
       ]
     },
     portfolio: {
-      sectionLabel: 'Our Work',
-      sectionTitle: 'Future Visions',
-      sectionSubtitle: 'A curated selection of our finest new build projects across Portugal.',
+      sectionLabel: 'Project Types',
+      sectionTitle: 'What We Coordinate',
+      sectionSubtitle: 'New build houses and small developments in the Lisbon, Cascais and Setúbal area.',
       filterAll: 'All',
-      filterCompleted: 'Completed',
-      filterUpcoming: 'Upcoming',
+      filterCompleted: 'Houses',
+      filterUpcoming: 'Developments',
       projects: [
         {
           id: 1,
-          title: 'Casa Alentejo',
-          location: 'Comporta, Portugal',
-          category: 'Completed',
-          year: '2024',
-          description: 'Minimalist coastal retreat with panoramic views'
+          title: 'Family House',
+          location: 'Cascais, Lisbon',
+          category: 'Houses',
+          year: '',
+          description: 'Full coordination of new-build house — design, permitting and construction — in a gated community on the Cascais line'
         },
         {
           id: 2,
-          title: 'Villa Moderna',
-          location: 'Sintra, Portugal',
-          category: 'Completed',
-          year: '2023',
-          description: 'Contemporary family home with mountain backdrop'
+          title: 'House with Pool',
+          location: 'Sintra, Lisbon',
+          category: 'Houses',
+          year: '',
+          description: 'New build with pool and landscaping in the Sintra area, managed from design approval to final handover'
         },
         {
           id: 3,
-          title: 'Eco Residence',
-          location: 'Algarve, Portugal',
-          category: 'Upcoming',
-          year: '2026',
-          description: 'Net-zero sustainable retreat with green roof'
+          title: 'Small Development',
+          location: 'Setúbal',
+          category: 'Developments',
+          year: '',
+          description: 'Small-scale residential development in the Setúbal region, coordinated from council approval through to sale'
         },
         {
           id: 4,
-          title: 'Contemporary Serra',
-          location: 'Arrábida, Portugal',
-          category: 'Upcoming',
-          year: '2025',
-          description: 'Bold concrete and wood structure in the hills'
+          title: 'Nature Reserve Build',
+          location: 'Arrábida, Setúbal',
+          category: 'Houses',
+          year: '',
+          description: 'New build in the Arrábida Natural Reserve zone, with specialist permitting coordination and certified contractor management'
         }
       ]
     },
     contact: {
-      sectionLabel: 'Start Your Project',
-      sectionTitle: 'Project Discovery',
-      sectionSubtitle: "Tell us about your vision for your new build in Portugal. We'll schedule a consultation to explore how we can bring it to life.",
+      sectionLabel: 'Get in Touch',
+      sectionTitle: 'Tell Us About Your Project',
+      sectionSubtitle: "Tell us what you have in mind. We'll arrange a no-obligation meeting to understand how we can help.",
       stepOf: 'of',
       steps: [
         {
-          question: 'Where would you like to build in Portugal?',
+          question: 'Where do you want to build?',
           options: [
-            { value: 'coast', label: 'Coastal Region', description: 'Algarve, Comporta, Cascais area' },
-            { value: 'interior', label: 'Interior Portugal', description: 'Mountains and countryside' },
-            { value: 'lisbon-area', label: 'Greater Lisbon', description: 'Capital region and surroundings' },
-            { value: 'other', label: 'Other / Flexible', description: 'Open to suggestions' }
+            { value: 'cascais-sintra', label: 'Cascais / Sintra', description: 'Cascais line and Sintra surroundings' },
+            { value: 'lisbon-city', label: 'Lisbon City', description: 'Lisbon municipality' },
+            { value: 'setubal', label: 'Setúbal / Arrábida', description: 'South bank and Serra da Arrábida' },
+            { value: 'other', label: 'Other Location', description: 'Greater Lisbon area or another district' }
           ]
         },
         {
-          question: 'Do you already have a plot of land?',
+          question: 'Do you already have a plot or property?',
           options: [
-            { value: 'yes', label: 'Yes, I have land', description: 'Ready to start the design phase' },
-            { value: 'no', label: 'No, I need help finding land', description: 'Use our Land Concierge service' },
-            { value: 'searching', label: 'Currently searching', description: 'Would like guidance' }
+            { value: 'yes', label: 'Yes, I have one', description: 'Ready to move forward with design and build' },
+            { value: 'looking', label: 'Still searching', description: 'Would like help evaluating options' },
+            { value: 'no', label: 'No, need to find one', description: 'Land search can be part of the scope' }
           ]
         },
         {
-          question: 'What is your target budget range?',
+          question: 'What is your estimated investment?',
           options: [
-            { value: '250-500k', label: '€250k – €500k', description: 'Quality starter builds' },
-            { value: '500k-1m', label: '€500k – €1M', description: 'Premium family homes' },
-            { value: '1m-2m', label: '€1M – €2M', description: 'Luxury residences' },
-            { value: '2m+', label: '€2M+', description: 'Bespoke estates' }
+            { value: '200-400k', label: '€200k – €400k', description: 'Mid-size family house' },
+            { value: '400k-800k', label: '€400k – €800k', description: 'Larger house or premium finishes' },
+            { value: '800k-1.5m', label: '€800k – €1.5M', description: 'High-end house or small development' },
+            { value: '1.5m+', label: '€1.5M+', description: 'Development or landmark project' }
           ]
         },
         {
@@ -298,29 +298,29 @@ export const translations = {
         emailPlaceholder: 'your@email.com',
         phone: 'Phone (optional)',
         phonePlaceholder: '+351...',
-        message: 'Tell us more about your vision',
-        messagePlaceholder: 'Describe your dream project...',
-        submit: 'Submit Inquiry',
+        message: 'Tell us more about your project',
+        messagePlaceholder: 'Location, size, target timeline...',
+        submit: 'Send Message',
         back: 'Back'
       },
       success: {
-        title: 'Thank You',
-        message: "We've received your inquiry and will be in touch within 24 hours to discuss your project."
+        title: 'Message Received',
+        message: "We'll be in touch within 24 hours to arrange a meeting."
       }
     },
     footer: {
-      description: 'End-to-end new build development in Portugal. From finding your perfect land to handing you the keys, we make exceptional architecture accessible.',
-      location: 'Portugal · Nationwide',
+      description: 'New build coordination and project management in Lisbon, Cascais and Setúbal. Architects, contractors and permitting managed end to end.',
+      location: 'Lisbon · Cascais · Setúbal',
       services: 'Services',
-      landSourcing: 'Land Sourcing',
+      landSourcing: 'Site & Land',
       designPermitting: 'Design & Permitting',
-      construction: 'Construction',
-      projectHandover: 'Project Handover',
+      construction: 'Construction Management',
+      projectHandover: 'Handover & Close',
       company: 'Company',
-      ourJourney: 'Our Journey',
-      portfolio: 'Portfolio',
+      ourJourney: 'How We Work',
+      portfolio: 'Projects',
       contact: 'Contact',
-      getInTouch: 'Get In Touch',
+      getInTouch: 'Get in Touch',
       startProject: 'Start Your Project',
       copyright: 'All rights reserved.',
       privacyPolicy: 'Privacy Policy',
