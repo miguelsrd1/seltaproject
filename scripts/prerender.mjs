@@ -95,19 +95,28 @@ try {
     }
   });
 
-  console.log('[prerender] Loading page…');
-  await page.goto(`http://127.0.0.1:${PORT}/`, {
-    waitUntil: 'networkidle2', // tolerates up to 2 open connections (e.g. Supabase WS)
-    timeout: 30_000,
-  });
+  // Routes to prerender: [urlPath, outputFile]
+  const routes = [
+    ['/', 'index.html'],
+    ['/topografia', 'topografia/index.html'],
+  ];
 
-  // Give framer-motion time to complete its initial animations
-  await new Promise((r) => setTimeout(r, 2000));
+  for (const [route, outFile] of routes) {
+    console.log(`[prerender] Loading ${route}…`);
+    await page.goto(`http://127.0.0.1:${PORT}${route}`, {
+      waitUntil: 'networkidle2',
+      timeout: 30_000,
+    });
 
-  const html = await page.content();
+    // Give framer-motion time to complete its initial animations
+    await new Promise((r) => setTimeout(r, 2000));
 
-  fs.writeFileSync(path.join(distDir, 'index.html'), html, 'utf-8');
-  console.log('[prerender] ✅  dist/index.html updated with pre-rendered content');
+    const html = await page.content();
+    const outPath = path.join(distDir, outFile);
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, html, 'utf-8');
+    console.log(`[prerender] ✅  dist/${outFile} updated`);
+  }
 
 } finally {
   await browser?.close();

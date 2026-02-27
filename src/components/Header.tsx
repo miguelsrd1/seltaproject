@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import seltaLogo from '@/assets/selta-logo.png';
 import MagneticButton from './MagneticButton';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -10,6 +11,9 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const prefix = isHome ? '' : '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +24,9 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { label: t.header.journey, href: '#journey' },
-    { label: t.header.portfolio, href: '#portfolio' },
-    { label: t.header.contact, href: '#contact' },
+    { label: t.header.journey, href: `${prefix}#journey` },
+    { label: t.header.portfolio, href: `${prefix}#portfolio` },
+    { label: t.header.contact, href: `${prefix}#contact` },
   ];
 
   return (
@@ -40,7 +44,7 @@ const Header: React.FC = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20 lg:h-24">
             {/* Logo */}
-            <a href="#" className="relative z-10">
+            <a href={isHome ? '#' : '/'} className="relative z-10">
               <img 
                 src={seltaLogo} 
                 alt="SELTA Projects" 
@@ -67,7 +71,7 @@ const Header: React.FC = () => {
               <LanguageSwitcher isScrolled={isScrolled} />
               <MagneticButton>
                 <a
-                  href="#contact"
+                  href={`${prefix}#contact`}
                   className={`border px-6 py-3 text-xs font-light tracking-widest uppercase transition-all duration-300 ${
                     isScrolled 
                       ? 'border-foreground text-foreground hover:bg-foreground hover:text-background' 
@@ -131,7 +135,7 @@ const Header: React.FC = () => {
                 <LanguageSwitcher isScrolled={true} />
               </motion.div>
               <motion.a
-                href="#contact"
+                href={`${prefix}#contact`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}

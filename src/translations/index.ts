@@ -145,6 +145,99 @@ export const translations = {
         message: 'Entraremos em contacto nas próximas 24 horas.'
       }
     },
+    topografia: {
+      meta: {
+        title: 'Topografia em Lisboa, Cascais e Setúbal | SELTA Projects',
+        description: 'Empresa de topografia em Lisboa. Levantamentos planimétricos e altimétricos, implantação de projeto e peças para licenciamento. Execução in-house — Cascais, Sintra, Setúbal e Arrábida.',
+      },
+      hero: {
+        label: 'TOPOGRAFIA · LISBOA',
+        heading: 'Levantamentos Topográficos',
+        subheading: 'em Lisboa, Cascais e Setúbal.',
+        body: 'Execução in-house com equipamento de precisão. Levantamentos planimétricos e altimétricos, implantação de projeto e todas as peças necessárias para licenciamento.',
+        cta: 'Pedir Orçamento',
+      },
+      services: {
+        label: 'O Que Fazemos',
+        heading: 'Serviços de Topografia',
+        items: [
+          {
+            title: 'Levantamento Planimétrico',
+            body: 'Representação rigorosa do terreno em planta — limites de propriedade, construções existentes, arruamentos, vegetação e demais elementos. Base essencial para projetos de arquitetura e obras.',
+          },
+          {
+            title: 'Levantamento Altimétrico',
+            body: 'Levantamento de cotas e curvas de nível para caracterizar o relevo do terreno. Indispensável para o estudo de implantação, plataformas, movimentos de terra e drenagem.',
+          },
+          {
+            title: 'Implantação de Projeto',
+            body: 'Materialização no terreno das coordenadas do projeto aprovado — implantação de muros, alinhamentos, estacas de fundação e demais elementos definidos em projeto.',
+          },
+          {
+            title: 'Peças para Licenciamento',
+            body: 'Elaboração de plantas topográficas, perfis e demais peças cartográficas exigidas pela câmara municipal no âmbito do processo de licenciamento de obras e loteamentos.',
+          },
+        ],
+      },
+      expertise: {
+        label: 'Porquê a SELTA',
+        heading: 'Topografia Executada In-House',
+        body: 'Ao contrário de muitas empresas de gestão de obra que subcontratam a topografia, a SELTA executa os levantamentos com equipa e equipamento próprios. Isso significa prazos mais curtos, maior controlo de qualidade e uma coordenação mais eficaz entre o levantamento e as fases seguintes do projeto.',
+        points: [
+          'Equipa de topógrafos qualificados (OA/ANEPC)',
+          'Equipamento de precisão próprio (estação total, GNSS)',
+          'Ficheiros entregues nos formatos DWG, DXF e PDF',
+          'Coordenação direta com o arquiteto e a câmara municipal',
+        ],
+      },
+      usecases: {
+        label: 'Quando é Necessário',
+        heading: 'Situações que Requerem Topografia',
+        items: [
+          { title: 'Pedido de Informação Prévia', body: 'A câmara municipal exige levantamento topográfico para avaliar a viabilidade construtiva de um terreno.' },
+          { title: 'Licenciamento de Obra Nova', body: 'Projetos de arquitetura e especialidades requerem planta de implantação sobre levantamento topográfico.' },
+          { title: 'Loteamentos e Urbanizações', body: 'Divisão de propriedade, definição de lotes e arruamentos exigem levantamento rigoroso e peças cartográficas certificadas.' },
+          { title: 'Início de Obra', body: 'Antes do início da construção, a implantação do projeto no terreno garante que as cotas e alinhamentos estão corretos.' },
+          { title: 'Litígios de Propriedade', body: 'Demarcação de limites e confrontações para resolução de conflitos de propriedade com base em dados técnicos precisos.' },
+          { title: 'Reabilitação e Ampliação', body: 'Levantamento do edificado existente como base para projetos de reabilitação, ampliação ou alteração de uso.' },
+        ],
+      },
+      faq: {
+        label: 'Perguntas Frequentes',
+        heading: 'Dúvidas sobre Topografia',
+        items: [
+          {
+            q: 'O que é um levantamento topográfico?',
+            a: 'Um levantamento topográfico é um conjunto de medições que representa com precisão o terreno — os seus limites, relevo, construções existentes e demais elementos. É a base técnica de qualquer projeto de construção ou licenciamento.',
+          },
+          {
+            q: 'Quando preciso de um levantamento topográfico?',
+            a: 'Sempre que pretenda construir, remodelar, lotear ou pedir informação prévia à câmara municipal. O levantamento topográfico é exigido pela maioria dos municípios como peça obrigatória no processo de licenciamento.',
+          },
+          {
+            q: 'Quanto tempo demora um levantamento topográfico?',
+            a: 'Dependendo da dimensão e complexidade do terreno, um levantamento típico demora entre 1 e 3 dias de trabalho de campo, mais 2 a 5 dias de gabinete para produção das peças finais. Terrenos maiores ou com acesso difícil podem requerer mais tempo.',
+          },
+          {
+            q: 'O que inclui o levantamento para licenciamento?',
+            a: 'As peças exigidas variam consoante o município, mas habitualmente incluem: planta de localização, planta do terreno com curvas de nível, cortes topográficos e levantamento das construções existentes — tudo georeferenciado segundo o sistema de coordenadas nacional (PT-TM06/ETRS89).',
+          },
+          {
+            q: 'Qual é a diferença entre levantamento planimétrico e altimétrico?',
+            a: 'O levantamento planimétrico representa o terreno em planta (2D) — limites, construções, caminhos, vegetação. O altimétrico acrescenta as cotas e curvas de nível (3D), caracterizando o relevo. Para licenciamento de obras, é habitualmente exigido o levantamento completo (planimétrico + altimétrico).',
+          },
+          {
+            q: 'Executam trabalhos em toda a área de Lisboa?',
+            a: 'Sim. Trabalhamos em todos os municípios da Área Metropolitana de Lisboa — Lisboa, Cascais, Sintra, Oeiras, Almada, Setúbal, Sesimbra e Palmela — bem como na Serra da Arrábida e zonas limítrofes.',
+          },
+        ],
+      },
+      cta: {
+        heading: 'Precisa de um Levantamento Topográfico?',
+        body: 'Diga-nos onde e o que pretende fazer. Enviamos orçamento em 24 horas.',
+        button: 'Pedir Orçamento',
+      },
+    },
     footer: {
       description: 'Topografia e gestão de obra nova em Lisboa, Cascais e Setúbal. Levantamentos executados in-house. Projeto, licenciamento e construção coordenados do início ao fim.',
       location: 'Lisboa · Cascais · Setúbal',
@@ -309,6 +402,99 @@ export const translations = {
         title: 'Message Received',
         message: "We'll be in touch within 24 hours."
       }
+    },
+    topografia: {
+      meta: {
+        title: 'Topographic Surveys in Lisbon, Cascais & Setúbal | SELTA Projects',
+        description: 'Topographic surveying company in Lisbon. Planimetric and altimetric surveys, project setting out and permitting drawings. In-house execution — Cascais, Sintra, Setúbal and Arrábida.',
+      },
+      hero: {
+        label: 'TOPOGRAPHY · LISBON',
+        heading: 'Topographic Surveys',
+        subheading: 'in Lisbon, Cascais and Setúbal.',
+        body: 'In-house execution with precision equipment. Planimetric and altimetric surveys, project setting out and all documentation required for building permits.',
+        cta: 'Request a Quote',
+      },
+      services: {
+        label: 'What We Do',
+        heading: 'Topography Services',
+        items: [
+          {
+            title: 'Planimetric Survey',
+            body: 'Accurate representation of the land in plan view — property boundaries, existing structures, roads, vegetation and other features. The essential base for architecture projects and construction.',
+          },
+          {
+            title: 'Altimetric Survey',
+            body: 'Survey of elevations and contour lines to characterise the terrain relief. Essential for building placement studies, earthworks, platforms and drainage design.',
+          },
+          {
+            title: 'Project Setting Out',
+            body: 'Materialising the approved project coordinates on the ground — setting out walls, alignments, foundation stakes and other elements defined in the project drawings.',
+          },
+          {
+            title: 'Permitting Drawings',
+            body: 'Production of topographic plans, cross-sections and other cartographic documents required by the local council as part of the building and plot division licensing process.',
+          },
+        ],
+      },
+      expertise: {
+        label: 'Why SELTA',
+        heading: 'Topography Carried Out In-House',
+        body: 'Unlike many project management companies that subcontract surveying, SELTA carries out all topographic work with its own team and equipment. This means shorter turnaround times, better quality control and more effective coordination between the survey and the subsequent project phases.',
+        points: [
+          'Qualified surveyors (OA/ANEPC registered)',
+          'Own precision equipment (total station, GNSS)',
+          'Files delivered in DWG, DXF and PDF formats',
+          'Direct coordination with the architect and local council',
+        ],
+      },
+      usecases: {
+        label: 'When You Need It',
+        heading: 'Situations That Require a Survey',
+        items: [
+          { title: 'Prior Information Request', body: 'The local council requires a topographic survey to assess the construction viability of a plot.' },
+          { title: 'New Build Licensing', body: 'Architecture and engineering projects require a setting-out plan based on a topographic survey.' },
+          { title: 'Plot Division & Urbanisation', body: 'Dividing property, defining plots and road alignments requires a precise survey and certified cartographic documents.' },
+          { title: 'Start of Construction', body: 'Before construction begins, setting out the project on the ground ensures levels and alignments are correct.' },
+          { title: 'Property Boundary Disputes', body: 'Boundary demarcation and verification of property lines for resolving disputes based on accurate technical data.' },
+          { title: 'Renovation & Extension', body: 'Survey of existing structures as the basis for renovation, extension or change-of-use projects.' },
+        ],
+      },
+      faq: {
+        label: 'FAQ',
+        heading: 'Topographic Survey Questions',
+        items: [
+          {
+            q: 'What is a topographic survey?',
+            a: 'A topographic survey is a set of measurements that accurately represents the land — its boundaries, relief, existing structures and other features. It is the technical foundation for any construction project or licensing process.',
+          },
+          {
+            q: 'When do I need a topographic survey?',
+            a: 'Whenever you intend to build, renovate, divide a plot or submit a prior information request to the local council. Most Portuguese councils require a topographic survey as a mandatory document in the licensing process.',
+          },
+          {
+            q: 'How long does a topographic survey take?',
+            a: 'Depending on the size and complexity of the terrain, a typical survey takes 1 to 3 days of fieldwork plus 2 to 5 office days to produce the final documents. Larger plots or those with difficult access may take longer.',
+          },
+          {
+            q: 'What does a permitting survey include?',
+            a: 'Requirements vary by council, but typically include: a location plan, a plot plan with contour lines, topographic cross-sections and a survey of existing structures — all georeferenced to the national coordinate system (PT-TM06/ETRS89).',
+          },
+          {
+            q: 'What is the difference between a planimetric and altimetric survey?',
+            a: 'A planimetric survey represents the land in plan (2D) — boundaries, structures, paths, vegetation. An altimetric survey adds elevations and contour lines (3D), characterising the relief. For building licensing, a full survey (planimetric + altimetric) is typically required.',
+          },
+          {
+            q: 'Do you cover the full Lisbon area?',
+            a: 'Yes. We work across all municipalities in the Lisbon Metropolitan Area — Lisbon, Cascais, Sintra, Oeiras, Almada, Setúbal, Sesimbra and Palmela — as well as Serra da Arrábida and surrounding areas.',
+          },
+        ],
+      },
+      cta: {
+        heading: 'Need a Topographic Survey?',
+        body: 'Tell us where and what you need. We will send a quote within 24 hours.',
+        button: 'Request a Quote',
+      },
     },
     footer: {
       description: 'Topographic surveys and new build coordination in Lisbon, Cascais and Setúbal. Surveys carried out in-house. Design, permitting and construction managed end to end.',
