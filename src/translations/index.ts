@@ -1,30 +1,30 @@
 export const translations = {
   pt: {
     header: {
-      journey: 'Como Trabalhamos',
+      journey: 'Serviços',
       portfolio: 'Projetos',
       contact: 'Contacto',
-      startProject: 'Iniciar Projeto'
+      startProject: 'Falar Connosco'
     },
     hero: {
       location: 'LISBOA · CASCAIS · SETÚBAL',
-      heading: 'A Sua Obra Nova,',
-      subheading: 'Gerida com Rigor.',
-      subtitle: 'Coordenamos arquitetos, empreiteiros e licenças para que se foque no que importa — o resultado final.',
+      heading: 'Da Topografia',
+      subheading: 'à Entrega das Chaves.',
+      subtitle: 'Levantamentos topográficos executados in-house. Projeto, licenciamento e obra coordenados do início ao fim.',
       startJourney: 'Falar Connosco',
       viewPortfolio: 'Ver Projetos'
     },
     journey: {
-      sectionLabel: 'Como Trabalhamos',
-      sectionTitle: 'O Seu Projeto, do Início ao Fim',
-      sectionSubtitle: 'Desde a primeira reunião até à entrega das chaves, a SELTA gere cada detalhe da sua obra nova na área de Lisboa.',
+      sectionLabel: 'O Que Fazemos',
+      sectionTitle: 'Do Levantamento à Obra',
+      sectionSubtitle: 'Começamos onde tudo começa — no terreno. Executamos a topografia in-house e coordenamos cada fase seguinte até à entrega final.',
       phases: [
         {
           number: '01',
-          title: 'Prospeção e Terreno',
-          subtitle: 'A Base',
-          description: 'Ajudamos a avaliar terrenos e a identificar o lote certo para o seu projeto. Analisamos condicionantes urbanísticas, PDMs e potencial construtivo antes de qualquer compromisso.',
-          details: ['Análise de Condicionantes', 'Consulta de PDM', 'Avaliação do Lote', 'Apoio à Decisão']
+          title: 'Levantamento Topográfico',
+          subtitle: 'A Base de Tudo',
+          description: 'Executamos levantamentos topográficos in-house com equipamento de precisão. Plantas topográficas, perfis, implantação de projeto e peças para licenciamento — entregues com rigor técnico.',
+          details: ['Levantamento Planimétrico', 'Levantamento Altimétrico', 'Implantação de Projeto', 'Peças para Licenciamento']
         },
         {
           number: '02',
@@ -51,54 +51,63 @@ export const translations = {
     },
     portfolio: {
       sectionLabel: 'Tipos de Projeto',
-      sectionTitle: 'O Que Coordenamos',
-      sectionSubtitle: 'Obras novas unifamiliares e pequenos empreendimentos na área de Lisboa, Cascais e Setúbal.',
+      sectionTitle: 'O Que Fazemos',
+      sectionSubtitle: 'Levantamentos topográficos e obras novas na área de Lisboa, Cascais e Setúbal.',
       filterAll: 'Todos',
-      filterCompleted: 'Moradias',
-      filterUpcoming: 'Empreendimentos',
+      filterCompleted: 'Topografia',
+      filterUpcoming: 'Obra Nova',
       projects: [
         {
           id: 1,
-          title: 'Moradia Unifamiliar',
-          location: 'Cascais, Lisboa',
-          category: 'Moradias',
+          title: 'Levantamento Topográfico',
+          location: 'Lisboa e Cascais',
+          category: 'Topografia',
           year: '',
-          description: 'Coordenação completa de moradia nova — projeto, licenciamento e obra — em condomínio na linha de Cascais'
+          description: 'Levantamentos planimétricos e altimétricos para licenciamento, projetos de arquitetura e implantação de obra'
         },
         {
           id: 2,
-          title: 'Moradia com Piscina',
-          location: 'Sintra, Lisboa',
-          category: 'Moradias',
+          title: 'Implantação e Marcação',
+          location: 'Sintra e Setúbal',
+          category: 'Topografia',
           year: '',
-          description: 'Gestão de obra nova com piscina e paisagismo em zona de Sintra, do projeto à entrega final'
+          description: 'Implantação de projeto no terreno e marcação de limites de propriedade para início de obra'
         },
         {
           id: 3,
-          title: 'Pequeno Empreendimento',
-          location: 'Setúbal',
-          category: 'Empreendimentos',
+          title: 'Moradia Unifamiliar',
+          location: 'Cascais, Lisboa',
+          category: 'Obra Nova',
           year: '',
-          description: 'Coordenação de empreendimento de pequena escala na região de Setúbal, da aprovação municipal à comercialização'
+          description: 'Coordenação completa de moradia nova — levantamento, projeto, licenciamento e obra — na linha de Cascais'
         },
         {
           id: 4,
-          title: 'Moradia na Serra',
+          title: 'Obra Nova com Licenciamento Especial',
           location: 'Arrábida, Setúbal',
-          category: 'Moradias',
+          category: 'Obra Nova',
           year: '',
-          description: 'Obra nova em zona de Reserva Natural, com coordenação de licenciamento especial e empreiteiro qualificado'
+          description: 'Levantamento e gestão de obra em zona condicionada, com coordenação de licenciamento especial junto da Câmara'
         }
       ]
     },
     contact: {
       sectionLabel: 'Fale Connosco',
       sectionTitle: 'Conte-nos o Seu Projeto',
-      sectionSubtitle: 'Diga-nos o que tem em mente. Marcamos uma reunião sem compromisso para perceber como podemos ajudar.',
+      sectionSubtitle: 'Diga-nos o que precisa. Respondemos em 24 horas.',
       stepOf: 'de',
       steps: [
         {
-          question: 'Onde pretende construir?',
+          question: 'O que procura?',
+          options: [
+            { value: 'topo-only', label: 'Só Topografia', description: 'Levantamento, implantação ou peças topográficas' },
+            { value: 'design-permit', label: 'Projeto e Licenciamento', description: 'Coordenação de arquiteto e processo camarário' },
+            { value: 'full-build', label: 'Gestão de Obra Completa', description: 'Do levantamento à entrega das chaves' },
+            { value: 'not-sure', label: 'Ainda não sei', description: 'Gostaria de uma conversa primeiro' }
+          ]
+        },
+        {
+          question: 'Onde se localiza o projeto?',
           options: [
             { value: 'cascais-sintra', label: 'Cascais / Sintra', description: 'Linha de Cascais e arredores de Sintra' },
             { value: 'lisbon-city', label: 'Lisboa Cidade', description: 'Município de Lisboa' },
@@ -107,20 +116,12 @@ export const translations = {
           ]
         },
         {
-          question: 'Já tem terreno ou imóvel?',
-          options: [
-            { value: 'yes', label: 'Sim, já tenho', description: 'Pronto para avançar com projeto e obra' },
-            { value: 'looking', label: 'Ainda à procura', description: 'Gostaria de ajuda na avaliação de opções' },
-            { value: 'no', label: 'Não, preciso de encontrar', description: 'Procura de terreno faz parte do âmbito' }
-          ]
-        },
-        {
           question: 'Qual o investimento previsto?',
           options: [
+            { value: 'topo-only', label: 'Só levantamento', description: 'Serviço de topografia pontual' },
             { value: '200-400k', label: '€200k – €400k', description: 'Moradia de dimensão média' },
-            { value: '400k-800k', label: '€400k – €800k', description: 'Moradia de maior dimensão ou com acabamentos especiais' },
-            { value: '800k-1.5m', label: '€800k – €1,5M', description: 'Moradia de gama alta ou pequeno empreendimento' },
-            { value: '1.5m+', label: '€1,5M+', description: 'Empreendimento ou projeto de referência' }
+            { value: '400k-800k', label: '€400k – €800k', description: 'Moradia maior ou acabamentos especiais' },
+            { value: '800k+', label: '€800k+', description: 'Moradia de gama alta ou empreendimento' }
           ]
         },
         {
@@ -134,26 +135,26 @@ export const translations = {
         emailPlaceholder: 'seu@email.com',
         phone: 'Telefone (opcional)',
         phonePlaceholder: '+351...',
-        message: 'Conte-nos mais sobre o projeto',
+        message: 'Conte-nos mais',
         messagePlaceholder: 'Localização, dimensão, prazo pretendido...',
         submit: 'Enviar Mensagem',
         back: 'Voltar'
       },
       success: {
         title: 'Mensagem Recebida',
-        message: 'Entraremos em contacto nas próximas 24 horas para marcar uma reunião.'
+        message: 'Entraremos em contacto nas próximas 24 horas.'
       }
     },
     footer: {
-      description: 'Coordenação e gestão de obras novas em Lisboa, Cascais e Setúbal. Arquitetos, empreiteiros e licenciamento geridos do início ao fim.',
+      description: 'Topografia e gestão de obra nova em Lisboa, Cascais e Setúbal. Levantamentos executados in-house. Projeto, licenciamento e construção coordenados do início ao fim.',
       location: 'Lisboa · Cascais · Setúbal',
       services: 'Serviços',
-      landSourcing: 'Prospeção de Terreno',
+      landSourcing: 'Levantamento Topográfico',
       designPermitting: 'Projeto e Licenciamento',
       construction: 'Coordenação de Obra',
       projectHandover: 'Entrega e Fecho',
       company: 'Empresa',
-      ourJourney: 'Como Trabalhamos',
+      ourJourney: 'O Que Fazemos',
       portfolio: 'Projetos',
       contact: 'Contacto',
       getInTouch: 'Falar Connosco',
@@ -165,30 +166,30 @@ export const translations = {
   },
   en: {
     header: {
-      journey: 'How We Work',
+      journey: 'Services',
       portfolio: 'Projects',
       contact: 'Contact',
-      startProject: 'Start Project'
+      startProject: 'Talk to Us'
     },
     hero: {
       location: 'LISBON · CASCAIS · SETÚBAL',
-      heading: 'Your New Build,',
-      subheading: 'Expertly Coordinated.',
-      subtitle: 'We manage architects, contractors and permits so you can focus on what matters — the finished result.',
+      heading: 'From Survey',
+      subheading: 'to Handover.',
+      subtitle: 'Topographic surveys carried out in-house. Design, permitting and construction coordinated end to end.',
       startJourney: 'Talk to Us',
       viewPortfolio: 'View Projects'
     },
     journey: {
-      sectionLabel: 'How We Work',
-      sectionTitle: 'Your Project, Start to Finish',
-      sectionSubtitle: "From the first meeting to key handover, SELTA manages every detail of your new build in the Lisbon area.",
+      sectionLabel: 'What We Do',
+      sectionTitle: 'From Survey to Build',
+      sectionSubtitle: "We start where everything starts — on the ground. We carry out topography in-house and coordinate every phase through to final handover.",
       phases: [
         {
           number: '01',
-          title: 'Site & Land',
+          title: 'Topographic Survey',
           subtitle: 'The Foundation',
-          description: 'We help you assess plots and identify the right site for your project. We review planning constraints, local PDMs and build potential before any commitment is made.',
-          details: ['Planning Constraints', 'PDM Review', 'Site Assessment', 'Decision Support']
+          description: 'We carry out topographic surveys in-house with precision equipment. Planimetric and altimetric surveys, project setting out and permitting drawings — delivered with technical accuracy.',
+          details: ['Planimetric Survey', 'Altimetric Survey', 'Project Setting Out', 'Permitting Drawings']
         },
         {
           number: '02',
@@ -215,54 +216,63 @@ export const translations = {
     },
     portfolio: {
       sectionLabel: 'Project Types',
-      sectionTitle: 'What We Coordinate',
-      sectionSubtitle: 'New build houses and small developments in the Lisbon, Cascais and Setúbal area.',
+      sectionTitle: 'What We Do',
+      sectionSubtitle: 'Topographic surveys and new build coordination in Lisbon, Cascais and Setúbal.',
       filterAll: 'All',
-      filterCompleted: 'Houses',
-      filterUpcoming: 'Developments',
+      filterCompleted: 'Topography',
+      filterUpcoming: 'New Build',
       projects: [
         {
           id: 1,
-          title: 'Family House',
-          location: 'Cascais, Lisbon',
-          category: 'Houses',
+          title: 'Topographic Survey',
+          location: 'Lisbon & Cascais',
+          category: 'Topography',
           year: '',
-          description: 'Full coordination of new-build house — design, permitting and construction — in a gated community on the Cascais line'
+          description: 'Planimetric and altimetric surveys for permitting, architecture projects and construction setting out'
         },
         {
           id: 2,
-          title: 'House with Pool',
-          location: 'Sintra, Lisbon',
-          category: 'Houses',
+          title: 'Setting Out & Boundary Marking',
+          location: 'Sintra & Setúbal',
+          category: 'Topography',
           year: '',
-          description: 'New build with pool and landscaping in the Sintra area, managed from design approval to final handover'
+          description: 'Project setting out on site and boundary marking for construction start'
         },
         {
           id: 3,
-          title: 'Small Development',
-          location: 'Setúbal',
-          category: 'Developments',
+          title: 'Family House',
+          location: 'Cascais, Lisbon',
+          category: 'New Build',
           year: '',
-          description: 'Small-scale residential development in the Setúbal region, coordinated from council approval through to sale'
+          description: 'Full coordination of new-build house — survey, design, permitting and construction — on the Cascais line'
         },
         {
           id: 4,
-          title: 'Nature Reserve Build',
+          title: 'Restricted Zone Build',
           location: 'Arrábida, Setúbal',
-          category: 'Houses',
+          category: 'New Build',
           year: '',
-          description: 'New build in the Arrábida Natural Reserve zone, with specialist permitting coordination and certified contractor management'
+          description: 'Survey and build coordination in a protected area, with specialist permitting managed through the local council'
         }
       ]
     },
     contact: {
       sectionLabel: 'Get in Touch',
       sectionTitle: 'Tell Us About Your Project',
-      sectionSubtitle: "Tell us what you have in mind. We'll arrange a no-obligation meeting to understand how we can help.",
+      sectionSubtitle: "Tell us what you need. We'll get back to you within 24 hours.",
       stepOf: 'of',
       steps: [
         {
-          question: 'Where do you want to build?',
+          question: 'What are you looking for?',
+          options: [
+            { value: 'topo-only', label: 'Topography Only', description: 'Survey, setting out or permitting drawings' },
+            { value: 'design-permit', label: 'Design & Permitting', description: 'Architect coordination and council process' },
+            { value: 'full-build', label: 'Full Build Management', description: 'From survey to key handover' },
+            { value: 'not-sure', label: "Not Sure Yet", description: "I'd like to have a conversation first" }
+          ]
+        },
+        {
+          question: 'Where is the project located?',
           options: [
             { value: 'cascais-sintra', label: 'Cascais / Sintra', description: 'Cascais line and Sintra surroundings' },
             { value: 'lisbon-city', label: 'Lisbon City', description: 'Lisbon municipality' },
@@ -271,20 +281,12 @@ export const translations = {
           ]
         },
         {
-          question: 'Do you already have a plot or property?',
-          options: [
-            { value: 'yes', label: 'Yes, I have one', description: 'Ready to move forward with design and build' },
-            { value: 'looking', label: 'Still searching', description: 'Would like help evaluating options' },
-            { value: 'no', label: 'No, need to find one', description: 'Land search can be part of the scope' }
-          ]
-        },
-        {
           question: 'What is your estimated investment?',
           options: [
+            { value: 'topo-only', label: 'Survey only', description: 'Topography service only' },
             { value: '200-400k', label: '€200k – €400k', description: 'Mid-size family house' },
             { value: '400k-800k', label: '€400k – €800k', description: 'Larger house or premium finishes' },
-            { value: '800k-1.5m', label: '€800k – €1.5M', description: 'High-end house or small development' },
-            { value: '1.5m+', label: '€1.5M+', description: 'Development or landmark project' }
+            { value: '800k+', label: '€800k+', description: 'High-end house or small development' }
           ]
         },
         {
@@ -298,26 +300,26 @@ export const translations = {
         emailPlaceholder: 'your@email.com',
         phone: 'Phone (optional)',
         phonePlaceholder: '+351...',
-        message: 'Tell us more about your project',
+        message: 'Tell us more',
         messagePlaceholder: 'Location, size, target timeline...',
         submit: 'Send Message',
         back: 'Back'
       },
       success: {
         title: 'Message Received',
-        message: "We'll be in touch within 24 hours to arrange a meeting."
+        message: "We'll be in touch within 24 hours."
       }
     },
     footer: {
-      description: 'New build coordination and project management in Lisbon, Cascais and Setúbal. Architects, contractors and permitting managed end to end.',
+      description: 'Topographic surveys and new build coordination in Lisbon, Cascais and Setúbal. Surveys carried out in-house. Design, permitting and construction managed end to end.',
       location: 'Lisbon · Cascais · Setúbal',
       services: 'Services',
-      landSourcing: 'Site & Land',
+      landSourcing: 'Topographic Survey',
       designPermitting: 'Design & Permitting',
       construction: 'Construction Management',
       projectHandover: 'Handover & Close',
       company: 'Company',
-      ourJourney: 'How We Work',
+      ourJourney: 'What We Do',
       portfolio: 'Projects',
       contact: 'Contact',
       getInTouch: 'Get in Touch',

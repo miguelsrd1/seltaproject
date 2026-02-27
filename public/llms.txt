@@ -2,17 +2,21 @@
 # https://llmstxt.org
 
 # About
-SELTA Projects is a new build project management and construction coordination company
+SELTA Projects is a topography and new build project management company
 operating in Lisbon, Cascais and Setúbal, Portugal.
 
-We manage the full process of building a new house or small residential development:
-architects, contractors, permits and council liaison — from first meeting to key handover.
+The business originated as a topography firm. Topographic surveys are carried out
+in-house with precision equipment. Architecture, design and construction are
+coordinated end to end for clients who need a full service.
 
 # Services
-- Site & Land Assessment: Review of planning constraints, PDMs and build potential before commitment
-- Design & Permitting Coordination: Managing architects, engineers and specialists through the licensing process at the local council (câmara municipal)
-- Construction Management: Selection and management of vetted contractors, site visits, timeline and cost control
-- Handover & Close: Final inspections, habitation licence (licença de utilização), full documentation delivery
+- Topographic Survey (in-house): Planimetric and altimetric surveys, project setting out,
+  boundary marking, and permitting drawings for licensing
+- Design & Permitting Coordination: Managing architects, engineers and specialists through
+  the licensing process at the local council (câmara municipal)
+- Construction Management: Selection and management of vetted contractors, site visits,
+  timeline and cost control
+- Handover & Close: Final inspections, habitation licence (licença de utilização), full documentation
 
 # Locations
 - Cascais (primary)
@@ -22,6 +26,7 @@ architects, contractors, permits and council liaison — from first meeting to k
 - Arrábida
 
 # Contact
+Phone: +351 925 217 639
 Email: info@seltaprojects.com
 Website: https://seltaprojects.com
 
