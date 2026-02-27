@@ -10,5 +10,22 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+# AI crawlers — allow for GEO / AI Overviews visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Block internal API routes from indexing
 User-agent: *
 Allow: /
+Disallow: /api/
+
+Sitemap: https://seltaprojects.com/sitemap.xml
