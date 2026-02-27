@@ -68,6 +68,7 @@ console.log(`[prerender] Static server → http://127.0.0.1:${PORT}`);
 let browser;
 try {
   browser = await puppeteer.launch({
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
     headless: true,
     args: [
       '--no-sandbox',
@@ -118,6 +119,10 @@ try {
     console.log(`[prerender] ✅  dist/${outFile} updated`);
   }
 
+} catch (err) {
+  console.warn('[prerender] ⚠️  Prerender failed (non-fatal):', err.message);
+  console.warn('[prerender]    The site will still work via React Router + _redirects.');
+  console.warn('[prerender]    Re-run "node scripts/prerender.mjs" locally to generate static HTML.');
 } finally {
   await browser?.close();
   server.close();
